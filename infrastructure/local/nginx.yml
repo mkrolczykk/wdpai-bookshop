@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: dockerfile/nginx/Dockerfile
+    ports:
+      - "8180:80"
+    depends_on:
+      bookshop_db:
+        condition: service_healthy
+    volumes:
+      - ../../services/bookshop:/app/
+    links:
+      - php
+    networks:
+      - ${GLOBAL_NETWORK:-services}

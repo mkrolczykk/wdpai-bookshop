@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: dockerfile/php/Dockerfile
+    depends_on:
+      bookshop_db:
+        condition: service_healthy
+    volumes:
+      - ../../services/bookshop:/app/
+    networks:
+      - ${GLOBAL_NETWORK:-services}
