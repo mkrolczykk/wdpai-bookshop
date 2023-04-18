@@ -483,3 +483,6 @@ infrastructure/local/containers-data/
 # .env variables
 ######################
 .env
+# config.php
+######################
+config.php

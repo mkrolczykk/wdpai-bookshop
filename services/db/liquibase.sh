@@ -25,22 +25,17 @@ PASSWORD=$3
 NETWORK_NAME=$4
 DB_URL=$5
 
-#USERNAME=postgres
-#PASSWORD=postgres
-#NETWORK_NAME=local_book_shop
-#DB_URL=jdbc:postgresql://bookshop_db:5432/bookshop_db
-
 if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ] || [ -z "$4" ] || [ -z "$5" ]; then
   echo echo "Error: missing argument. Usage: $0 [command] [username] [password] [network_name] [db_url]"
 else
 docker run \
-  --network $NETWORK_NAME \
+  --network "$NETWORK_NAME" \
   --rm \
   -v "$PWD"/changelog:/liquibase/changelog/ \
 liquibase/liquibase:$LIQUIBASE_VERSION "$COMMAND" \
   --changelog-file=db.changelog.xml \
-  --url=$DB_URL \
-  --username=$USERNAME \
-  --password=$PASSWORD \
+  --url="$DB_URL" \
+  --username="$USERNAME" \
+  --password="$PASSWORD" \
   --driver=org.postgresql.Driver
 fi

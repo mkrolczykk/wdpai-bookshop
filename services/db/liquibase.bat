@@ -21,14 +21,10 @@
 SET LIQUIBASE_VERSION=4.19
 
 SET COMMAND=%1
-@REM SET USERNAME=%2
-@REM SET PASSWORD=%3
-@REM SET NETWORK_NAME=%4
-@REM SET DB_URL=%5
-SET USERNAME=postgres
-SET PASSWORD=postgres
-SET NETWORK_NAME=local_book_shop
-SET DB_URL=jdbc:postgresql://bookshop_db:5432/bookshop_db
+SET USERNAME=%2
+SET PASSWORD=%3
+SET NETWORK_NAME=%4
+SET DB_URL=%5
 
 IF "%COMMAND%"=="" (
   ECHO "Error: missing argument. Usage: %~f0 [command] [username] [password] [network_name] [db_url]"
