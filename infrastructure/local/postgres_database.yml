@@ -14,7 +14,7 @@ services:
       timeout: 5s
       retries: 5
     ports:
-      - '5500:5432'
+      - '${POSTGRES_DB_HOST_PORT}:${POSTGRES_DB_INTERNAL_PORT}'
     volumes:
       - "./containers-data/bookshop_db/db-1/data:/var/lib/postgresql/data/:z"
     networks:

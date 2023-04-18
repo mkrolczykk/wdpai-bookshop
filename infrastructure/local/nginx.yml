@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: dockerfile/nginx/Dockerfile
     ports:
-      - "8180:80"
+      - "${NGINX_HOST_PORT}:${NGINX_INTERNAL_PORT}"
     depends_on:
       bookshop_db:
         condition: service_healthy
