@@ -6,7 +6,7 @@
 
     <changeSet id="202304190103-0" author="mkrolczyk">
         <createTable tableName="role" remarks="Used to store user roles">
-            <column name="role_id" type="smallserial" remarks="The unique id to identify the role">
+            <column name="role_id" type="SMALLINT" remarks="The unique id to identify the role">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="varchar(15)" remarks="Role name">
@@ -20,7 +20,7 @@
 
     <changeSet id="202304190103-1" author="mkrolczyk">
         <createTable tableName="system_user" remarks="Used to store user information">
-            <column name="user_id" type="BIGSERIAL" remarks="The unique id to identify the user">
+            <column name="user_id" type="BIGINT" remarks="The unique id to identify the user">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(50)" remarks="The first name of the user">
@@ -80,10 +80,10 @@
 
     <changeSet id="202304190103-4" author="mkrolczyk">
         <createTable tableName="user_role" remarks="Used to store user role">
-            <column name="role_id" type="smallint" remarks="The unique ID of the the role">
+            <column name="role_id" type="SMALLINT" remarks="The unique ID of the role">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="user_id" type="bigint" remarks="The unique ID of the user">
+            <column name="user_id" type="BIGINT" remarks="The unique ID of the user">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
         </createTable>
