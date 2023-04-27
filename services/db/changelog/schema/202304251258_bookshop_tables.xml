@@ -100,12 +100,6 @@
             <column name="description" type="TEXT" remarks="Section for a detailed description of the book">
                 <constraints nullable="true"/>
             </column>
-            <column name="price" type="DECIMAL(5, 2)" remarks="The price of the book">
-                <constraints nullable="false"/>
-            </column>
-            <column name="currency_id" type="BIGINT" remarks="The price currency">
-                <constraints nullable="false"/>
-            </column>
             <column name="num_pages" type="INT" remarks="Number of pages">
                 <constraints nullable="false"/>
             </column>
@@ -128,15 +122,6 @@
                 <constraints nullable="true"/>
             </column>
         </createTable>
-
-        <addForeignKeyConstraint
-                constraintName="fk_book_currency"
-                baseTableName="book"
-                baseColumnNames="currency_id"
-                referencedTableName="currency"
-                referencedColumnNames="currency_id"
-                onDelete="NO ACTION"
-                onUpdate="NO ACTION"/>
 
         <addForeignKeyConstraint
                 constraintName="fk_book_language"
@@ -180,6 +165,44 @@
     </changeSet>
 
     <changeSet id="202304251258-6" author="mkrolczyk">
+        <createTable tableName="book_price" remarks="Used to store books prices">
+            <column name="book_id" type="BIGINT" remarks="The unique ID of the book">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="currency_id" type="BIGINT" remarks="The price currency">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="price" type="DECIMAL(5,2)" remarks="The price of the book">
+                <constraints nullable="false"/>
+            </column>
+            <column name="added_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP" remarks="Stores the date and time at which the book price is added">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                constraintName="book_price_book_fk"
+                baseTableName="book_price"
+                baseColumnNames="book_id"
+                referencedTableName="book"
+                referencedColumnNames="book_id"
+                onDelete="NO ACTION"
+                onUpdate="NO ACTION"/>
+
+        <addForeignKeyConstraint
+                constraintName="book_price_currency_fk"
+                baseTableName="book_price"
+                baseColumnNames="currency_id"
+                referencedTableName="currency"
+                referencedColumnNames="currency_id"
+                onDelete="NO ACTION"
+                onUpdate="NO ACTION"/>
+
+        <addUniqueConstraint constraintName="unique_book_id_currency_id" tableName="book_price" columnNames="book_id, currency_id"/>
+
+    </changeSet>
+
+    <changeSet id="202304251258-7" author="mkrolczyk">
         <createTable tableName="book_author" remarks="Used to store book authors">
             <column name="book_id" type="BIGINT" remarks="The unique ID of the the book">
                 <constraints primaryKey="true" nullable="false"/>
@@ -207,9 +230,11 @@
                 onDelete="NO ACTION"
                 onUpdate="NO ACTION"/>
 
+        <addUniqueConstraint constraintName="unique_book_id_author_id" tableName="book_author" columnNames="book_id, author_id"/>
+
     </changeSet>
 
-    <changeSet id="202304251258-7" author="mkrolczyk">
+    <changeSet id="202304251258-8" author="mkrolczyk">
         <createTable tableName="address_status" remarks="Used to store customers addresses status">
             <column name="status_id" type="BIGINT" autoIncrement="true" remarks="The unique id to identify the address status">
                 <constraints primaryKey="true" nullable="false"/>
@@ -223,7 +248,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="202304251258-8" author="mkrolczyk">
+    <changeSet id="202304251258-9" author="mkrolczyk">
         <createTable tableName="country" remarks="Used to store address country">
             <column name="country_id" type="BIGINT" autoIncrement="true" remarks="The unique id to identify the address country">
                 <constraints primaryKey="true" nullable="false"/>
@@ -237,7 +262,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="202304251258-9" author="mkrolczyk">
+    <changeSet id="202304251258-10" author="mkrolczyk">
         <createTable tableName="address" remarks="Used to store address">
             <column name="address_id" type="BIGINT" autoIncrement="true" remarks="The unique id to identify the address">
                 <constraints primaryKey="true" nullable="false"/>
@@ -270,7 +295,7 @@
 
     </changeSet>
 
-    <changeSet id="202304251258-10" author="mkrolczyk">
+    <changeSet id="202304251258-11" author="mkrolczyk">
         <createTable tableName="system_user_address" remarks="Used to store user role">
             <column name="user_id" type="BIGINT" remarks="The unique ID of the user">
                 <constraints primaryKey="true" nullable="false"/>
@@ -315,7 +340,7 @@
 
     </changeSet>
 
-    <changeSet id="202304251258-11" author="mkrolczyk">
+    <changeSet id="202304251258-12" author="mkrolczyk">
         <createTable tableName="shipping_method" remarks="Used to store shipping information">
             <column name="method_id" type="BIGINT" autoIncrement="true" remarks="The unique id to identify the address status">
                 <constraints primaryKey="true" nullable="false"/>
@@ -323,7 +348,7 @@
             <column name="method_name" type="VARCHAR(150)" remarks="Name of the method">
                 <constraints nullable="false"/>
             </column>
-            <column name="method_cost" type="DECIMAL(6, 2)" remarks="Cost of the method">
+            <column name="method_cost" type="DECIMAL(6,2)" remarks="Cost of the method">
                 <constraints nullable="false"/>
             </column>
             <column name="currency_id" type="BIGINT" remarks="The shipping method cost currency">
@@ -345,7 +370,7 @@
 
     </changeSet>
 
-    <changeSet id="202304251258-12" author="mkrolczyk">
+    <changeSet id="202304251258-13" author="mkrolczyk">
         <createTable tableName="order" remarks="Used to store system orders">
             <column name="order_id" type="BIGINT" remarks="The unique ID of the order">
                 <constraints primaryKey="true" nullable="false"/>
@@ -405,7 +430,7 @@
 
     </changeSet>
 
-    <changeSet id="202304251258-13" author="mkrolczyk">
+    <changeSet id="202304251258-14" author="mkrolczyk">
         <createTable tableName="order_status" remarks="Used to store order status information">
             <column name="status_id" type="BIGINT" autoIncrement="true" remarks="The unique id to identify the order status">
                 <constraints primaryKey="true" nullable="false"/>
@@ -419,7 +444,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="202304251258-14" author="mkrolczyk">
+    <changeSet id="202304251258-15" author="mkrolczyk">
         <createTable tableName="order_line" remarks="Used to store order item">
             <column name="line_id" type="BIGINT" remarks="The unique ID of the order line">
                 <constraints primaryKey="true" nullable="false"/>
@@ -430,11 +455,14 @@
             <column name="book_id" type="BIGINT" remarks="The unique ID of the book">
                 <constraints nullable="false"/>
             </column>
-            <column name="total_price" type="DECIMAL(5, 2)" remarks="The price of items in order line">
-                <constraints nullable="false"/>
-            </column>
             <column name="amount" type="BIGINT" remarks="Amount of book">
                 <constraints nullable="false"/>
+            </column>
+            <column name="total_price" type="DECIMAL(5,2)" remarks="The price of items in order line">
+                <constraints nullable="false"/>
+            </column>
+            <column name="currency_id" type="BIGINT" remarks="The currency">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP" remarks="Stores the date and time at which the order record is created">
                 <constraints nullable="false"/>
@@ -459,9 +487,18 @@
                 onDelete="NO ACTION"
                 onUpdate="NO ACTION"/>
 
+        <addForeignKeyConstraint
+                constraintName="fk_order_line_currency"
+                baseTableName="order_line"
+                baseColumnNames="currency_id"
+                referencedTableName="currency"
+                referencedColumnNames="currency_id"
+                onDelete="NO ACTION"
+                onUpdate="NO ACTION"/>
+
     </changeSet>
 
-    <changeSet id="202304251258-15" author="mkrolczyk">
+    <changeSet id="202304251258-16" author="mkrolczyk">
         <createTable tableName="order_history" remarks="Used to store orders history">
             <column name="history_id" type="BIGINT" remarks="The unique ID of the history of the order">
                 <constraints primaryKey="true" nullable="false"/>
@@ -497,7 +534,7 @@
 
     </changeSet>
 
-    <changeSet id="202304251258-16" author="mkrolczyk">
+    <changeSet id="202304251258-17" author="mkrolczyk">
         <createTable tableName="system_user_favorite_book" remarks="Used to store user favourite books">
             <column name="user_id" type="BIGINT" remarks="The unique ID of the user">
                 <constraints primaryKey="true" nullable="false"/>
@@ -527,6 +564,8 @@
                 referencedColumnNames="book_id"
                 onDelete="NO ACTION"
                 onUpdate="NO ACTION"/>
+
+        <addUniqueConstraint constraintName="unique_user_id_book_id" tableName="system_user_favorite_book" columnNames="user_id, book_id"/>
 
     </changeSet>
 
