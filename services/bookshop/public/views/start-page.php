@@ -1,0 +1,3 @@
+<!DOCTYPE html>
+
+Start page
