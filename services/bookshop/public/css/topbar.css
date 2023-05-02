@@ -1,0 +1,46 @@
+.topbar {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.topbar-header {
+    background-color: #6c757d;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.top-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.top-nav li {
+    margin-right: 15px;
+}
+
+.top-nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.account-nav {
+    display: flex;
+    align-items: center;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}

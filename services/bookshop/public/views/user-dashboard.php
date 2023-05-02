@@ -6,7 +6,7 @@
         <title>User dashboard</title>
     </head>
     <body>
-        <h1>Welcome <?php echo $_SESSION["role"]; ?>!</h1>
+        <h1>Welcome <?php echo $_SESSION["name"]; ?>!</h1>
         <a href="logout">Logout</a>
     </body>
 </html>
