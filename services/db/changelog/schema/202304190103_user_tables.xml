@@ -42,7 +42,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="phone_number" type="VARCHAR(15)" remarks="The mobile number of the user">
-                <constraints nullable="true" unique="true"/>
+                <constraints nullable="true"/>
             </column>
             <column name="user_intro" type="VARCHAR(100)" defaultValue="" remarks="The brief introduction of the User to be displayed on the user profile">
                 <constraints nullable="true"/>
@@ -60,14 +60,6 @@
                 <constraints nullable="true"/>
             </column>
         </createTable>
-    </changeSet>
-
-    <changeSet id="202304190103-2" author="mkrolczyk">
-        <createIndex indexName="uq_phone" tableName="system_user">
-            <column name="phone_number">
-                <constraints unique="true"/>
-            </column>
-        </createIndex>
     </changeSet>
 
     <changeSet id="202304190103-3" author="mkrolczyk">
