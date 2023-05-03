@@ -16,8 +16,8 @@
             <div class="dropdown">
                 <button class="dropbtn">My Account</button>
                 <div class="dropdown-content">
-                    <button>Sign in</button>
-                    <button>Sign up</button>
+                    <button onclick="location.href='/login'">Sign in</button>
+                    <button onclick="location.href='/register'">Sign up</button>
                 </div>
             </div>
             <div class="dropdown">

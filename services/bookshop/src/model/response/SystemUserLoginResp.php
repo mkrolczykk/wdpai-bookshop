@@ -14,17 +14,17 @@ class SystemUserLoginResp {
 
     private $password;
 
-    private $role;
+    private $roleId;
 
 
-    public function __construct($userId, $name, $surname, $username, $email, $password, $role) {
+    public function __construct($userId, $name, $surname, $username, $email, $password, $roleId) {
         $this->userId = $userId;
         $this->name = $name;
         $this->surname = $surname;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
-        $this->role = $role;
+        $this->roleId = $roleId;
     }
 
     public function getUserId()
@@ -57,9 +57,9 @@ class SystemUserLoginResp {
         return $this->password;
     }
 
-    public function getRole()
+    public function getRoleId()
     {
-        return $this->role;
+        return $this->roleId;
     }
 
 }

@@ -16,7 +16,7 @@ class SystemUserRepository extends Repository {
                 su.username AS username, 
                 su.email AS email, 
                 su.password AS password,
-                r.name AS role
+                r.role_id AS role_id
             FROM system_user su
             JOIN user_role ur ON su.user_id = ur.user_id
             JOIN role r ON ur.role_id = r.role_id
@@ -38,7 +38,7 @@ class SystemUserRepository extends Repository {
             $user['username'],
             $user['email'],
             $user['password'],
-            $user['role']
+            $user['role_id']
         );
     }
 

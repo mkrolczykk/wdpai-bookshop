@@ -2,7 +2,7 @@
 
 class UserDashboardController extends AppController {
 
-    public function dashboard()
+    public function userDashboard()
     {
         $this->render('user-dashboard');
     }

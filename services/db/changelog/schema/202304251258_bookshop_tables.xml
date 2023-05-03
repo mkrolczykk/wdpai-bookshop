@@ -372,7 +372,7 @@
 
     <changeSet id="202304251258-13" author="mkrolczyk">
         <createTable tableName="order" remarks="Used to store system orders">
-            <column name="order_id" type="BIGINT" remarks="The unique ID of the order">
+            <column name="order_id" type="BIGINT" autoIncrement="true" remarks="The unique ID of the order">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="user_id" type="BIGINT" remarks="The unique ID of the system user">
@@ -446,7 +446,7 @@
 
     <changeSet id="202304251258-15" author="mkrolczyk">
         <createTable tableName="order_line" remarks="Used to store order item">
-            <column name="line_id" type="BIGINT" remarks="The unique ID of the order line">
+            <column name="line_id" type="BIGINT" autoIncrement="true" remarks="The unique ID of the order line">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="order_id" type="BIGINT" remarks="The unique ID of the order">
@@ -500,7 +500,7 @@
 
     <changeSet id="202304251258-16" author="mkrolczyk">
         <createTable tableName="order_history" remarks="Used to store orders history">
-            <column name="history_id" type="BIGINT" remarks="The unique ID of the history of the order">
+            <column name="history_id" type="BIGINT" autoIncrement="true" remarks="The unique ID of the history of the order">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="order_id" type="BIGINT" remarks="The unique ID of the order">

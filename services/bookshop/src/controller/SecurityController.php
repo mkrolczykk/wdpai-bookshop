@@ -12,6 +12,12 @@ class SecurityController extends AppController {
 
     private $url;
 
+    private $loginRedirects = array(
+        Role::ROLE_ADMIN => 'adminDashboard',
+        Role::ROLE_EMPLOYEE => 'employeeDashboard',
+        Role::ROLE_USER => 'userDashboard'
+    );
+
     private $userRepository;
 
     public function __construct() {
@@ -22,76 +28,79 @@ class SecurityController extends AppController {
 
     public function login() {
 
-        $this->checkIfSessionIsActive();
+        if(empty($_SESSION["id"])) {
 
-        if (!$this->isPost()) {
-            return $this->render('login');
+            if (!$this->isPost()) {
+                return $this->render('login');
+            }
+
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user = $this->userRepository->getSystemUser($email);
+
+            if (!$user) {
+                return $this->render('login', ['messages' => ['User not found!']]);
+            }
+
+            if ($user->getEmail() !== $email) {
+                return $this->render('login', ['messages' => ['User with this email does not exist!']]);
+            }
+
+            if (!password_verify($password, $user->getPassword())) {
+                return $this->render('login', ['messages' => ['Wrong password!']]);
+            }
+
+            $this->setLoginSession(true, $user->getUserId(), $user->getName(), $user->getUsername(), $user->getRoleId());
+
         }
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $user = $this->userRepository->getSystemUser($email);
-
-        if (!$user) {
-            return $this->render('login', ['messages' => ['User not found!']]);
-        }
-
-        if ($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['User with this email does not exist!']]);
-        }
-
-        if (!password_verify($password, $user->getPassword())) {
-            return $this->render('login', ['messages' => ['Wrong password!']]);
-        }
-
-        $this->setLoginSession(true, $user->getUserId(), $user->getName(), $user->getUsername(), $user->getRole());
-
-        header("Location: {$this->url}/dashboard");
+        $this->redirectByAuthRoleId($_SESSION["roleId"]);
     }
 
     public function register() {
 
-        $this->checkIfSessionIsActive();
-
-        if (!$this->isPost()) {
-            return $this->render('register');
-        }
-
-        $name = $_POST['name'];
-        $surname = $_POST['surname'];
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $confirmedPassword = $_POST['confirmedPassword'];
-        $notifications = $_POST['notifications'];
-
-        if ($password !== $confirmedPassword) {
-            return $this->render('register', ['messages' => ['Please provide proper password']]);
-        }
-
-        if($this->userRepository->checkIfEmailAlreadyExists($email)) {
-            return $this->render('register', ['messages' => ['Given email already exists!']]);
-        }
-
-        if($this->userRepository->checkIfUsernameAlreadyExists($username)) {
-            return $this->render('register', ['messages' => ['Given username already exists!']]);
-        }
-
-        $user =
-            new SystemUserRegisterReq(
-                $name,
-                $surname,
-                $username,
-                $email,
-                password_hash($password, PASSWORD_DEFAULT),
-                $notifications,
-                Role::ROLE_USER);
-
-        if($this->userRepository->addSystemUser($user)) {
-            return $this->render('login', ['messages' => ['Registration has been completed successfully! You can log in now :)']]);
+        if(!empty($_SESSION["id"])) {
+            $this->redirectByAuthRoleId($_SESSION["roleId"]);
         } else {
-            return $this->render('register', ['messages' => ['Registration fail! Try again in a while']]);
+            if (!$this->isPost()) {
+                return $this->render('register');
+            }
+
+            $name = $_POST['name'];
+            $surname = $_POST['surname'];
+            $username = $_POST['username'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $confirmedPassword = $_POST['confirmedPassword'];
+            $notifications = $_POST['notifications'];
+
+            if ($password !== $confirmedPassword) {
+                return $this->render('register', ['messages' => ['Please provide proper password']]);
+            }
+
+            if ($this->userRepository->checkIfEmailAlreadyExists($email)) {
+                return $this->render('register', ['messages' => ['Given email already exists!']]);
+            }
+
+            if ($this->userRepository->checkIfUsernameAlreadyExists($username)) {
+                return $this->render('register', ['messages' => ['Given username already exists!']]);
+            }
+
+            $user =
+                new SystemUserRegisterReq(
+                    $name,
+                    $surname,
+                    $username,
+                    $email,
+                    password_hash($password, PASSWORD_DEFAULT),
+                    $notifications,
+                    Role::ROLE_USER);
+
+            if ($this->userRepository->addSystemUser($user)) {
+                return $this->render('login', ['messages' => ['Registration has been completed successfully! You can log in now :)']]);
+            } else {
+                return $this->render('register', ['messages' => ['Registration fail! Try again in a while']]);
+            }
         }
     }
 
@@ -106,12 +115,29 @@ class SecurityController extends AppController {
         }
     }
 
-    private function checkIfSessionIsActive(): void
+    private function redirectByAuthRoleId($role)
     {
-        if(!empty($_SESSION["id"])) {
 
-            header("Location: {$this->url}/dashboard");
-            $this->render('user-dashboard');
+        switch ($role) {
+            case Role::ROLE_ADMIN:
+                $this->redirect($role, 'admin-dashboard');
+                break;
+            case Role::ROLE_EMPLOYEE:
+                $this->redirect($role, 'employee-dashboard');
+                break;
+            case Role::ROLE_USER:
+                $this->redirect($role, 'user-dashboard');
+                break;
+            default:
+                return $this->render('login', ['messages' => ['Unrecognized user. Please log in again.']]);
+        }
+    }
+
+    private function redirect(int $role, string $template) {
+
+        if (isset($this->loginRedirects[$role])) {
+            header("Location: {$this->url}/{$this->loginRedirects[$role]}");
+            return $this->render($template);
         }
     }
 
@@ -120,13 +146,13 @@ class SecurityController extends AppController {
         string $userId,
         string $name,
         string $username,
-        string $role): void
+        int $role): void
     {
         $_SESSION["authenticated"] = $authenticated;
         $_SESSION["id"] = $userId;
         $_SESSION["name"] = $name;
         $_SESSION["username"] = $username;
-        $_SESSION["role"] = $role;
+        $_SESSION["roleId"] = $role;
     }
 
 }
