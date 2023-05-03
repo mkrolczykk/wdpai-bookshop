@@ -1,10 +1,15 @@
 <?php
 
+require_once __DIR__ . '/../common/utils/AuthUtil.php';
+
 class UserDashboardController extends AppController {
 
     public function userDashboard()
     {
-        $this->render('user-dashboard');
+        if(AuthUtil::checkIfAuthorized($_SESSION["roleId"], Role::ROLE_USER)) {
+            return $this->render('user-dashboard');
+        }
+        die("Wrong url!");
     }
 
 }
