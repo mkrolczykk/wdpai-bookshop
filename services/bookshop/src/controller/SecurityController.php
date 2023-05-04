@@ -111,7 +111,7 @@ class SecurityController extends AppController {
             session_unset();
             session_destroy();
 
-            header("Location: {$this->url}/");
+            header("Location: {$this->url}/login");
         }
     }
 
