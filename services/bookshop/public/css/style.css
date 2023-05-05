@@ -19,16 +19,20 @@ fieldset,img {
     border:0;
 }
 
+a, a:visited, a:hover, a:active, a:link {
+    text-decoration: none;
+    color: inherit;
+}
+
 input{
     border:1px solid #b0b0b0;
     padding:3px 5px 4px;
     color:#979797;
-    width:190px;
 }
 
 address,caption,cite,code,dfn,th,var {
-    font-style:normal;
-    font-weight:normal;
+    font-style:inherit;
+    font-weight:inherit;
 }
 
 ol,ul {
@@ -41,7 +45,7 @@ caption,th {
 
 h1,h2,h3,h4,h5,h6 {
     font-size:100%;
-    font-weight:normal;
+    font-weight:inherit;
 }
 
 q:before,q:after {
@@ -55,7 +59,8 @@ abbr,acronym {
 /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 @media (max-width : 576px) {
     body {
-        font-size: 8px;
+        font-size: 10px;
+        font-weight: 600;
     }
 }
 

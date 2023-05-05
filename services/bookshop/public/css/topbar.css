@@ -117,6 +117,9 @@
 
 /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 @media (max-width : 576px) {
+    .top-nav ul {
+        display: none;
+    }
     .dropdown .dropbtn {
         padding: 5px 8px;
     }

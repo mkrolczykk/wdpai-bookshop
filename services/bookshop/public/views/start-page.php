@@ -23,7 +23,7 @@
             We are using two different files as header and footer.
         </p>
     </div>
-<!--    --><?php
-//    include "components/footer.php";
-//    ?>
+    <?php
+    include "components/footer.php";
+    ?>
 </body>

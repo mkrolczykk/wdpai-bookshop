@@ -8,7 +8,8 @@
         <form class="navbar-search-form" action="searchResults" method="POST">
             <div class="navbar-search-box">
                 <input name="searchkey" type="text" placeholder="Search for title, author">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <input type="hidden" name="currency" value="USD">
+                <button type="submit"><i class="fa fa-search navbar-search-icon"></i></button>
             </div>
         </form>
     </div>

@@ -21,18 +21,19 @@ class FindResultsController extends AppController {
     {
 
         if (!$this->isPost()) {
-            return $this->render('find-results');
+            return $this->render('find-results', ['messages' => ['Use Search bar to find a book']]);
         }
 
         $searchKey = $_POST['searchkey'];
+        $currency = $_POST['currency'];
 
-        $findResult = $this->bookRepository->getBooksByTitleOrAuthor($searchKey);
+        $findResult = $this->bookRepository->getBooksByTitleOrAuthor($searchKey, $currency);
 
         if (!$findResult) {
-            return $this->render('find-results', ['messages' => ['No books found for search key: "' . $searchKey . '" :(']]);
+            return $this->render('find-results', ['messages' => ['0 results found for search key "' . $searchKey . '"']]);
         }
 
-        $this->render('find-results', ['findResult' => $findResult]);
+        $this->render('find-results', ['booksResult' => $findResult]);
     }
 
 }
