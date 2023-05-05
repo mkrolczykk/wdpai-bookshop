@@ -1,22 +1,21 @@
-<div class="main-nav">
-    <div class="logo">
+<div class="navbar">
+    <div class="navbar-logo">
         <a href="#">
-            <span>Multi</span>
-            <span>Shop</span>
+            <span>Book Shop</span>
         </a>
     </div>
-    <div class="search">
-        <form>
-            <div class="search-box">
-                <input type="text" placeholder="Search for products">
-                <button><i class="fa fa-search"></i></button>
+    <div class="navbar-search">
+        <form class="navbar-search-form" action="searchResults" method="POST">
+            <div class="navbar-search-box">
+                <input name="searchkey" type="text" placeholder="Search for title, author">
+                <button type="submit"><i class="fa fa-search"></i></button>
             </div>
         </form>
     </div>
     <div class="customer-service">
         <div class="phone-number">
             <p>Customer Service</p>
-            <h5>+012 345 6789</h5>
+            <h5>+18 26 248 54</h5>
         </div>
     </div>
 </div>

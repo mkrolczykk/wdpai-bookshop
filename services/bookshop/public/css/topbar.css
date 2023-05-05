@@ -4,7 +4,7 @@
 }
 
 .topbar-header {
-    background-color: #6c757d;
+    background-color: #F2F2F2;
     font-weight: 600;
     display: flex;
     justify-content: space-between;
@@ -25,7 +25,7 @@
 }
 
 .top-nav a {
-    color: #fff;
+    color: #6C757D;
     text-decoration: none;
 }
 
@@ -85,7 +85,7 @@
     cursor: not-allowed;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+.dropdown a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
     background-color: red;
 }
 
@@ -150,21 +150,15 @@
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
 @media (min-width: 992px) {
-    body {
-        font-size: 14px;
-    }
+
 }
 
 /* big landscape tablets, laptops, and desktops */
 @media (min-width: 1200px) {
-    body {
-        font-size: 14px;
-    }
+
 }
 
 /* hi-res laptops and desktops */
 @media (min-width: 1400px) {
-    body {
-        font-size: 14px;
-    }
+
 }

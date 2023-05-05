@@ -1,8 +1,3 @@
-
-<!DOCTYPE html>
-<html lang="en">
-
-
 <div class="topbar">
     <div class="topbar-header">
         <?php
