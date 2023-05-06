@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="public/css/topbar.css">
-    <link rel="stylesheet" type="text/css" href="public/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/find-results.css">
-    <link rel="stylesheet" type="text/css" href="public/css/books-container.css">
-    <link rel="stylesheet" type="text/css" href="public/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/topbar.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/navbar.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/books-container.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/encouragement-bar.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/footer.css">
 
     <script type="text/javascript" src="public/js/topbar.js"></script>
 
@@ -20,6 +21,12 @@
         include "components/topbar.php";
         include "components/navbar.php";
     ?>
+    <div style="background-color: #6c757d">
+        <p style='text-align: center; color: #333333;' ><b>Visit T4Tutorials for more how to's and tutorials.</b></p>
+        <p style='text-align: center; color: #333333;'>
+            We are using two different files as header and footer.
+        </p>
+    </div>
     <div class="find-results-content">
         <?php if (!empty($booksResult)): ?>
             <h1 class="find-results-content-message">
@@ -36,14 +43,8 @@
             </div>
         <?php endif; ?>
     </div>
-    <div class="find-results-encouragement">
-        <div class="find-results-encouragement-text">
-            <h2>Register for more possibilities</h2>
-            <p>We'd love to help you find books you'll love.</p>
-        </div>
-        <div class="find-results-encouragement-button button">
-            <a href="/register">Register</a>
-        </div>
-    </div>
-    <?php include "components/footer.php"; ?>
+    <?php
+        include "components/encouragement-bar.php";
+        include "components/footer.php";
+    ?>
 </body>

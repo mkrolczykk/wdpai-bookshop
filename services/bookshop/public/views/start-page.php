@@ -4,11 +4,14 @@
 <head>
     <title>Start page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="public/css/topbar.css">
-    <link rel="stylesheet" type="text/css" href="public/css/navbar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/topbar.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/navbar.css">
+
     <script type="text/javascript" src="public/js/topbar.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <?php
