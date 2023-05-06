@@ -56,11 +56,20 @@ abbr,acronym {
     border:0;
 }
 
+.button {
+    border: none;
+    text-transform: uppercase;
+    min-width: 150px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
 /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 @media (max-width : 576px) {
     body {
-        font-size: 10px;
-        font-weight: 600;
+        font-size: 12px;
     }
 }
 

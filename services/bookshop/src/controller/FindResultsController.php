@@ -1,6 +1,5 @@
 <?php
 
-
 require_once 'AppController.php';
 require_once __DIR__ . '/../model/response/BookResp.php';
 require_once __DIR__.'/../repository/BookRepository.php';
@@ -17,11 +16,11 @@ class FindResultsController extends AppController {
         $this->bookRepository = new BookRepository();
     }
 
-    public function searchResults()
+    public function search()
     {
 
         if (!$this->isPost()) {
-            return $this->render('find-results', ['messages' => ['Use Search bar to find a book']]);
+            return $this->render('find-results', ['messages' => ['Use search bar to find a book']]);
         }
 
         $searchKey = $_POST['searchkey'];

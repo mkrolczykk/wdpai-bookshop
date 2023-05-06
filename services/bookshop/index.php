@@ -11,7 +11,7 @@ Router::get('bestsellers', 'BestsellersController');
 Router::get('contact', 'ContactController');
 Router::get('category', 'BookCategoryController');
 Router::get('bookDetail', 'BookDetailController');
-Router::get('searchResults', 'FindResultsController');
+Router::get('search', 'FindResultsController');
 Router::post('register', 'SecurityController');
 Router::post('login', 'SecurityController');
 Router::post('logout', 'SecurityController');

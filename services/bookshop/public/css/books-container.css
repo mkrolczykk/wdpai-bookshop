@@ -58,7 +58,6 @@
 @media (min-width: 577px) {
     .books-section {
         justify-content: center;
-        max-width: 600px;
     }
 
     .books-section > div {
@@ -80,7 +79,6 @@
 @media (min-width: 992px) {
     .books-section {
         justify-content: center;
-        max-width: 600px;
     }
 
     .books-section > div {

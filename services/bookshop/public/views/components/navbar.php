@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="navbar-search">
-        <form class="navbar-search-form" action="searchResults" method="POST">
+        <form class="navbar-search-form" action="search" method="POST">
             <div class="navbar-search-box">
                 <input name="searchkey" type="text" placeholder="Search for title, author">
                 <input type="hidden" name="currency" value="USD">

@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/find-results.css">
     <link rel="stylesheet" type="text/css" href="public/css/books-container.css">
+    <link rel="stylesheet" type="text/css" href="public/css/footer.css">
 
     <script type="text/javascript" src="public/js/topbar.js"></script>
 
@@ -36,11 +37,11 @@
         <?php endif; ?>
     </div>
     <div class="find-results-encouragement">
-        <div class="text">
+        <div class="find-results-encouragement-text">
             <h2>Register for more possibilities</h2>
             <p>We'd love to help you find books you'll love.</p>
         </div>
-        <div class="button">
+        <div class="find-results-encouragement-button button">
             <a href="/register">Register</a>
         </div>
     </div>
