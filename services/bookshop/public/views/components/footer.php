@@ -80,10 +80,10 @@
             <?php endif; ?>
             <h6 class="footer-subtitle">Find us on social media</h6>
             <div class="footer-media-links">
-                <a class="footer-media-link" href="/"><i class="fa fa-twitter fa-lg footer-media-link-icon"></i></a>
-                <a class="footer-media-link" href="/"><i class="fa fa-facebook fa-lg footer-media-link-icon"></i></a>
-                <a class="footer-media-link" href="/"><i class="fa fa-linkedin fa-lg footer-media-link-icon"></i></a>
-                <a class="footer-media-link" href="/"><i class="fa fa-instagram fa-lg footer-media-link-icon"></i></a>
+                <a class="footer-media-link" href="/"><i class="fa-brands fa-twitter fa-lg footer-media-link-icon"></i></a>
+                <a class="footer-media-link" href="/"><i class="fa-brands fa-facebook fa-lg footer-media-link-icon"></i></a>
+                <a class="footer-media-link" href="/"><i class="fa-brands fa-linkedin fa-lg footer-media-link-icon"></i></a>
+                <a class="footer-media-link" href="/"><i class="fa-brands fa-instagram fa-lg footer-media-link-icon"></i></a>
             </div>
         </div>
     </div>

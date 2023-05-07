@@ -66,6 +66,13 @@ abbr,acronym {
     padding: 10px 20px;
 }
 
+.unique-value-style {
+    color: #693FDF;
+    font-weight: 600;
+    /*font-size: 1.3rem;*/
+    display: inline-block;
+}
+
 /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
 @media (max-width : 576px) {
     body {
@@ -98,6 +105,10 @@ abbr,acronym {
 @media (min-width: 1200px) {
     body {
         font-size: 14px;
+    }
+
+    .unique-value-style {
+        font-size: 1.3rem;
     }
 }
 

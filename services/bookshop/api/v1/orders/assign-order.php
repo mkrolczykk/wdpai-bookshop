@@ -9,7 +9,11 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 //$bookGenreController = new BookGenreController();
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if(
+    $_SERVER["REQUEST_METHOD"] == "POST" &&
+    $_SESSION["authenticated"] &&
+    $_SESSION["roleId"] == Role::ROLE_ADMIN) {
+
     echo 'TODO -> ADD ME';
 } else {
     echo json_encode(array("status" => 405 , "message" => 'Method not allowed'));
