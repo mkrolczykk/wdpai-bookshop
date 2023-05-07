@@ -69,8 +69,11 @@ abbr,acronym {
 .unique-value-style {
     color: #693FDF;
     font-weight: 600;
-    /*font-size: 1.3rem;*/
     display: inline-block;
+}
+
+.page-section-title {
+
 }
 
 /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */

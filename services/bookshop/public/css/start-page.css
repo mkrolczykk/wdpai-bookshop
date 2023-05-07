@@ -87,7 +87,6 @@
     align-items: center;
     gap: 20px;
     width: 100%;
-
 }
 
 .start-page-content-features-feature {
@@ -120,6 +119,12 @@
         padding: unset;
     }
 
+    .start-page-content-features {
+        margin-top: 50px;
+        margin-bottom: 75px;
+        gap: 40px;
+    }
+
     .start-page-content-start-right {
         display: none;
     }
@@ -148,11 +153,18 @@
 
 /* smartphones, Android phones, landscape iPhone */
 @media (min-width: 577px) {
+
     .start-page-content-start {
         display: flex;
         justify-content: center;
         align-items: flex-end;
         gap: 25px;
+    }
+
+    .start-page-content-features {
+        margin-top: 50px;
+        margin-bottom: 75px;
+        gap: 40px;
     }
 
     .start-page-content-left-descr h1 {
@@ -183,6 +195,10 @@
     .start-page-content-features {
         flex-direction: row;
         justify-content: space-evenly;
+    }
+
+    .start-page-content-features {
+        gap: 20px;
     }
 
     .start-page-content-features-feature-title {

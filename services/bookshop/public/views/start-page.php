@@ -66,42 +66,41 @@
             </div>
         </section>
         <section class="start-page-content-features">
-            <div class="start-page-content-features-feature">
-                <div class="start-page-content-features-feature-image">
-                    <i class='fa-solid fa-check-double'></i>
-                </div>
-                <div class="start-page-content-features-feature-title">
-                    <h2>High-quality Books</h2>
-                </div>
-            </div>
-            <div class="start-page-content-features-feature">
-                <div class="start-page-content-features-feature-image">
-                    <i class="fas fa-shipping-fast"></i>
-                </div>
-                <div class="start-page-content-features-feature-title">
-                    <h2>Free Delivery</h2>
-                </div>
-            </div>
-            <div class="start-page-content-features-feature">
-                <div class="start-page-content-features-feature-image">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </div>
-                <div class="start-page-content-features-feature-title">
-                    <h2>21-Day Return</h2>
-                </div>
-            </div>
-            <div class="start-page-content-features-feature">
-                <div class="start-page-content-features-feature-image">
-                    <i class="fas fa-phone-volume"></i>
-                </div>
-                <div class="start-page-content-features-feature-title">
-                    <h2>24/7 Support</h2>
-                </div>
-            </div>
+            <?php
+                $features = [
+                    [
+                        'icon' => 'fa-solid fa-check-double',
+                        'title' => 'High-quality Books',
+                    ],
+                    [
+                        'icon' => 'fas fa-shipping-fast',
+                        'title' => 'Free Delivery',
+                    ],
+                    [
+                        'icon' => 'fa-solid fa-arrow-left',
+                        'title' => '21-Day Return',
+                    ],
+                    [
+                        'icon' => 'fas fa-phone-volume',
+                        'title' => '24/7 Support',
+                    ],
+                ];
+
+                foreach ($features as $feature) {
+                    echo '<div class="start-page-content-features-feature">';
+                    echo '<div class="start-page-content-features-feature-image">';
+                    echo '<i class="' . $feature['icon'] . '"></i>';
+                    echo '</div>';
+                    echo '<div class="start-page-content-features-feature-title">';
+                    echo '<h2>' . $feature['title'] . '</h2>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            ?>
         </section>
         <section class="start-page-content-categories">
             <section class="start-page-content-books-categories">
-                <h1 class="start-page-content-books-categories-title">Categories</h1>
+                <h1 class="page-section-title start-page-content-books-categories-title">Categories</h1>
                 <div class="start-page-content-books-categories-container">
                     <div class="start-page-content-books-categories-container-category">
                         <img src="" alt="">
