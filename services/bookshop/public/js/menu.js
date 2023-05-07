@@ -1,6 +1,4 @@
-function loadCategories() {
-
-    const url = 'http://localhost:8180/api/get-book-genres.php';
+function loadCategories(url) {
 
     fetch(url)
         .then(response => response.json())
@@ -21,5 +19,6 @@ function loadCategories() {
         })
         .catch(error => console.error(error));
 }
+
 // load automatically
-loadCategories();
+loadCategories('http://localhost:8180/api/v1/genres/get-book-genres.php');

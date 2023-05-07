@@ -44,6 +44,7 @@
     min-height: 300px;
     justify-content: flex-start;
     align-content: center;
+    gap: 10px;
 }
 
 .footer-contact-text {
@@ -120,6 +121,7 @@
     .footer-contact-info {
         max-width: 80%;
         justify-content: center;
+        gap: 5px;
     }
 
     .footer-menu {
