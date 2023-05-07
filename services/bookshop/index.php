@@ -16,7 +16,7 @@ Router::post('register', 'SecurityController');
 Router::post('login', 'SecurityController');
 Router::post('logout', 'SecurityController');
 Router::get('userDashboard', 'UserDashboardController');
-Router::get('employeeDashboard', 'employeeDashboardController');
-Router::get('adminDashboard', 'adminDashboardController');
+Router::get('employeeDashboard', 'EmployeeDashboardController');
+Router::get('adminDashboard', 'AdminDashboardController');
 
 Router::run($path);

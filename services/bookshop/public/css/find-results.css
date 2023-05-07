@@ -43,6 +43,7 @@
 /* big landscape tablets, laptops, and desktops */
 @media (min-width: 1200px) {
     .find-results-content-message {
+        padding-left: 60px;
         justify-content: start;
     }
 }

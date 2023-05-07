@@ -20,6 +20,19 @@
     display: flex;
 }
 
+.searchkey {}
+
+.searchkey-disabled {
+    cursor: not-allowed;
+}
+
+.navbar-search-disabled {
+    background-color: #FFFFFF;
+    color: #212529;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .navbar-search-form {
     flex-grow: 1;
 }
@@ -152,6 +165,4 @@
 }
 
 /* hi-res laptops and desktops */
-@media (min-width: 1400px) {
-
-}
+@media (min-width: 1400px) {}

@@ -11,21 +11,73 @@
             <div class="footer-menu-nav">
                 <h5 class="footer-subtitle">Menu</h5>
                 <div class="footer-menu-nav-options">
-                    <a class="footer-menu-nav-option" href="/"><i class="fa fa-caret-right footer-menu-icon"></i>Start page</a>
-                    <a class="footer-menu-nav-option" href="newBooks"><i class="fa fa-caret-right footer-menu-icon"></i>New books</a>
-                    <a class="footer-menu-nav-option" href="bestsellers"><i class="fa fa-caret-right footer-menu-icon"></i>Bestsellers</a>
-                    <a class="footer-menu-nav-option" href="contact"><i class="fa fa-caret-right footer-menu-icon"></i>Contact</a>
-                    <a class="footer-menu-nav-option" href="login"><i class="fa fa-caret-right footer-menu-icon"></i>Log in</a>
-                    <a class="footer-menu-nav-option" href="register"><i class="fa fa-caret-right footer-menu-icon"></i>Register</a>
+                    <?php
+                        $menuResult = array(
+                            array("/", "Start page"),
+                            array("/newBooks", "New books"),
+                            array("/bestsellers", "Bestsellers"),
+                            array("/contact", "Contact"),
+                            array("/login", "Log in"),
+                            array("/register", "Register")
+                        );
+
+                        foreach($menuResult as $menu) {
+                            echo '<a href="' . $menu[0] . '" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>' . $menu[1] . '</a>';
+                        }
+                    ?>
+                    <?php if (isset($_SESSION["authenticated"])): ?>
+                        <?php if ($_SESSION["authenticated"] === true &&
+                                  $_SESSION["roleId"] === Role::ROLE_USER): ?>
+                            <a href="/userDashboard" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Dashboard</a>
+                            <a href="/explore" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Explore books</a>
+                            <a href="/shopping" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Shopping</a>
+                            <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
+                        <?php elseif ($_SESSION["authenticated"] === true &&
+                                      $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
+                            <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
+                            <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
+                            <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
+                        <?php elseif ($_SESSION["authenticated"] === true &&
+                                      $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
+                            <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
+                            <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
+                            <a href="/employees" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Employees</a>
+                            <a href="/addEmployee" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add employee</a>
+                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
+
             </div>
         </div>
         <div class="footer-media">
-            <h5 class="footer-subtitle">Not registered yet?</h5>
-            <p class="footer-media-text">Create your account ASAP!</p>
-            <div class="footer-media-button button">
-                <a href="/register">Register</a>
-            </div>
+            <?php if (!isset($_SESSION["authenticated"])): ?>
+                <h5 class="footer-subtitle">Not registered yet?</h5>
+                <p class="footer-media-text">Create your account ASAP!</p>
+                <div class="footer-media-button button">
+                    <a href="/register">Register</a>
+                </div>
+            <?php elseif ($_SESSION["authenticated"] === true &&
+                          $_SESSION["roleId"] === Role::ROLE_USER): ?>
+                <h5 class="footer-subtitle">Thank you for being with us!</h5>
+                <p class="footer-media-text">We really appreciate your effort</p>
+                <div class="footer-media-button button">
+                    <a href="/products">Browse our products</a>
+                </div>
+            <?php elseif ($_SESSION["authenticated"] === true &&
+                          $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
+                <h5 class="footer-subtitle">Employee panel</h5>
+                <p class="footer-media-text">We really appreciate your effort</p>
+                <div class="footer-media-button button">
+                    <a href="/orders">Fulfill orders</a>
+                </div>
+            <?php elseif ($_SESSION["authenticated"] === true &&
+                          $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
+                <h5 class="footer-subtitle">Administrator panel</h5>
+                <p class="footer-media-text">Book shop admin panel</p>
+                <div class="footer-media-button button">
+                    <a href="/employees">Employees</a>
+                </div>
+            <?php endif; ?>
             <h6 class="footer-subtitle">Find us on social media</h6>
             <div class="footer-media-links">
                 <a class="footer-media-link" href="/"><i class="fa fa-twitter fa-lg footer-media-link-icon"></i></a>

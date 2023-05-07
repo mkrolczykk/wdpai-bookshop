@@ -26,13 +26,18 @@ class FindResultsController extends AppController {
         $searchKey = $_POST['searchkey'];
         $currency = $_POST['currency'];
 
-        $findResult = $this->bookRepository->getBooksByTitleOrAuthor($searchKey, $currency);
+        if (isset($searchKey) && !empty(trim($searchKey))) {
 
-        if (!$findResult) {
-            return $this->render('find-results', ['messages' => ['0 results found for search key "' . $searchKey . '"']]);
+            $findResult = $this->bookRepository->getBooksByTitleOrAuthor($searchKey, $currency);
+
+            if (!$findResult) {
+                return $this->render('find-results', ['messages' => ['0 results found for search key "' . $searchKey . '"']]);
+            }
+
+            $this->render('find-results', ['booksResult' => $findResult]);
+        } else {
+            return $this->render('find-results', ['messages' => ['No search key provided. Try again']]);
         }
-
-        $this->render('find-results', ['booksResult' => $findResult]);
     }
 
 }

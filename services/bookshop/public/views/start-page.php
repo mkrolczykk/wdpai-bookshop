@@ -15,10 +15,9 @@
 </head>
 <body>
     <?php
-
-    $title = "Start page";
-    include "components/topbar.php";
-    include "components/navbar.php";
+        $title = "Start page";
+        include "components/topbar.php";
+        include "components/navbar.php";
     ?>
     <div style="background-color: #6c757d">
         <p><b>Visit T4Tutorials for more how to's and tutorials.</b></p>
@@ -27,6 +26,6 @@
         </p>
     </div>
     <?php
-    include "components/footer.php";
+        include "components/footer.php";
     ?>
 </body>

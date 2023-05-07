@@ -47,7 +47,7 @@
         <div class="account-nav">
             <div class="dropdown" onclick="openButton('account')">
                 <button class="dropbtn">My Account
-                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-caret-down fa-lg"></i>
                 </button>
                 <div class="dropdown-content" id="account">
                     <?php
@@ -65,7 +65,7 @@
             </div>
             <div class="dropdown" onclick="openButton('currency')" >
                 <button id="dropdown-currency" class="dropbtn" disabled>USD
-                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-caret-down fa-lg"></i>
                 </button>
                 <div class="dropdown-content" id="currency">
                     <a>PLN</a>
@@ -74,7 +74,7 @@
             </div>
             <div class="dropdown" onclick="openButton('language')" >
                 <button id="dropdown-language" class="dropbtn" disabled>EN
-                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-caret-down fa-lg"></i>
                 </button>
                 <div class="dropdown-content" id="language">
                     <a>PL</a>

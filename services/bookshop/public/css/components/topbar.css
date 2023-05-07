@@ -1,10 +1,11 @@
 .topbar {
+    background-color: #F2F2F2;
     max-width: 100%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .topbar-header {
-    background-color: #F2F2F2;
     font-weight: 600;
     display: flex;
     justify-content: space-between;
@@ -108,7 +109,7 @@
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #f1f1f1;
 }
 
 .show {
@@ -122,9 +123,6 @@
     }
     .dropdown .dropbtn {
         padding: 5px 8px;
-    }
-    .dropbtn {
-        font-size: 8px;
     }
 
     .dropdown-content {
