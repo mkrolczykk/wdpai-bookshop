@@ -24,11 +24,10 @@ class FindResultsController extends AppController {
         }
 
         $searchKey = $_POST['searchkey'];
-        $currency = $_POST['currency'];
 
         if (isset($searchKey) && !empty(trim($searchKey))) {
 
-            $findResult = $this->bookRepository->getBooksByTitleOrAuthor($searchKey, $currency);
+            $findResult = $this->bookRepository->getBooksByTitleOrAuthor($searchKey, $_SESSION["currency"]);
 
             if (!$findResult) {
                 return $this->render('find-results', ['messages' => ['0 results found for search key "' . $searchKey . '"']]);

@@ -27,10 +27,12 @@ class DefaultController extends AppController {
     public function index()
     {
 
+        $_SESSION["currency"] = "USD";  // temporary solution
+
         $totalBooks = $this->bookRepository->countBooks();
         $bookCategories = $this->bookGenreRepository->getBookGenres();
-        $topSoldBooks = $this->bookOrderHistoryRepository->getTopSoldBooks(10);
-        $recentlyAddedBooks = $this->bookRepository->getRecentlyAddedBooks(20);
+        $topSoldBooks = $this->bookOrderHistoryRepository->getTopSoldBooks(10, $_SESSION["currency"]);
+        $recentlyAddedBooks = $this->bookRepository->getRecentlyAddedBooks(20, $_SESSION["currency"]);
 
         if (!$this->isPost()) {
             return $this->render('start-page', [

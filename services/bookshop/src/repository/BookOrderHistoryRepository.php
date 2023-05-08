@@ -5,7 +5,7 @@ require_once __DIR__ . '/../model/response/BookResp.php';
 
 class BookOrderHistoryRepository extends Repository {
 
-    public function getTopSoldBooks(int $limit): array {
+    public function getTopSoldBooks(int $limit, string $currency): array {
 
         $result = [];
 
@@ -31,7 +31,7 @@ class BookOrderHistoryRepository extends Repository {
                 JOIN order_history oh ON o.order_id = oh.order_id
                 JOIN order_status os ON os.status_id = oh.status_id
                 WHERE 
-                    os.status in (\'Delivered\', \'Delivery In Progress\')
+                    os.status in (\'Order Received\', \'Pending Delivery\', \'Delivered\', \'Delivery In Progress\')
                 GROUP BY 
                     ol.book_id
                 ORDER BY 
@@ -39,7 +39,8 @@ class BookOrderHistoryRepository extends Repository {
                 LIMIT :limit
             ) AS sales ON book.book_id = sales.book_id
             WHERE 
-                book.created_at <= NOW()
+                book.created_at <= NOW() AND
+                currency.shortcut = :currency
             GROUP BY 
                 book.book_id, 
                 book.title, 
@@ -53,6 +54,7 @@ class BookOrderHistoryRepository extends Repository {
         ');
 
         $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':currency', $currency, PDO::PARAM_STR);
 
         $stmt->execute();
         $books = $stmt->fetchAll(PDO::FETCH_ASSOC);

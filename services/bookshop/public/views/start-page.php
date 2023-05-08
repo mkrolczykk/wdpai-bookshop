@@ -127,7 +127,7 @@
             </section>
         </section>
         <section class="start-page-content-top-books">
-            <h1 class="page-section-title start-page-content-top-books-title">Top 10 Bestsellers</h1>
+            <h1 class="page-section-title start-page-content-top-books-title">Bestsellers</h1>
             <?php if (!empty($booksResult = $topSoldBooks)): ?>
                 <?php include "components/books-container.php"; ?>
             <?php else: ?>

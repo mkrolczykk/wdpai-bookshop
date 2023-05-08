@@ -62,7 +62,7 @@ class BookRepository extends Repository
         return (int)$count['count'];
     }
 
-    public function getRecentlyAddedBooks(int $limit): array {
+    public function getRecentlyAddedBooks(int $limit, string $currency): array {
 
         $result = [];
 
@@ -79,7 +79,8 @@ class BookRepository extends Repository
             JOIN book_price ON book.book_id = book_price.book_id
             JOIN currency ON book_price.currency_id = currency.currency_id
             WHERE
-                book.created_at <= NOW()
+                book.created_at <= NOW() AND
+                currency.shortcut = :currency
             GROUP BY 
                 book.book_id, 
                 book.title, 
@@ -92,6 +93,7 @@ class BookRepository extends Repository
         ');
 
         $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':currency', $currency, PDO::PARAM_STR);
 
         $stmt->execute();
         $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
