@@ -5,7 +5,7 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <changeSet id="202305081104-0" author="mkrolczyk">
-        <loadData file="data/order_line.csv" tableName="author" relativeToChangelogFile="true"/>
+        <loadData file="data/order_line.csv" tableName="order_line" relativeToChangelogFile="true"/>
     </changeSet>
 
 </databaseChangeLog>
