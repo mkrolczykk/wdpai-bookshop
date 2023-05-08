@@ -17,6 +17,7 @@
     <script type="text/javascript" src="public/js/topbar.js"></script>
     <script type="text/javascript" src="public/js/menu.js"></script>
 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -58,7 +59,7 @@
             </div>
             <div class="start-page-content-start-right">
                 <div class="start-page-content-start-right-title">
-                    <h1>We already have over <h2 class="unique-value-style">2464</h2></h1><h1>books in our warehouses!</h1>
+                    <h1>We already have over <h2 class="unique-value-style"><?= $totalBooks ?></h2></h1><h1>unique books in our warehouses!</h1>
                 </div>
                 <div class="start-page-content-start-right-image">
                     <img src="./public/img/start-page-image2.png" alt="">
@@ -67,6 +68,7 @@
         </section>
         <section class="start-page-content-features">
             <?php
+
                 $features = [
                     [
                         'icon' => 'fa-solid fa-check-double',
@@ -98,20 +100,35 @@
                 }
             ?>
         </section>
+        <?php
+        $categoriesHtml = '';
+        foreach ($bookCategories as $category) {
+            $thumbnailSrc = $category->getThumbnail() ?: 'public/img/mock-cover.png';
+            $categoryLink = '/category?type=' . strtolower(str_replace(' ', '-', $category->getGenre()));
+            $categoryHtml = sprintf(
+                '<a href="%s" class="start-page-content-books-categories-container-category">
+                            <img src="%s" alt="%s">
+                            <h2>%s</h2>
+                        </a>',
+                $categoryLink,
+                $thumbnailSrc,
+                $category->getGenre(),
+                $category->getGenre()
+            );
+            $categoriesHtml .= $categoryHtml;
+        }
+        ?>
         <section class="start-page-content-categories">
             <section class="start-page-content-books-categories">
                 <h1 class="page-section-title start-page-content-books-categories-title">Categories</h1>
                 <div class="start-page-content-books-categories-container">
-                    <div class="start-page-content-books-categories-container-category">
-                        <img src="" alt="">
-                        <h2></h2>
-                    </div>
+                    <?php echo $categoriesHtml; ?>
                 </div>
             </section>
         </section>
         <section class="start-page-content-top-books">
-            <h1 class="start-page-content-top-books-title">Best selling books</h1>
-            <?php if (!empty($booksResult)): ?>
+            <h1 class="page-section-title start-page-content-top-books-title">Top 10 Bestsellers</h1>
+            <?php if (!empty($booksResult = $topSoldBooks)): ?>
                 <?php include "components/books-container.php"; ?>
             <?php else: ?>
                 <div class="start-page-content-message">
@@ -128,8 +145,8 @@
         include "components/encouragement-bar.php";
     ?>
     <section class="start-page-content-recently-added">
-        <h1 class="start-page-content-top-books-title">Recently added</h1>
-        <?php if (!empty($booksResult)): ?>
+        <h1 class="page-section-title start-page-content-recently-added-title">Recently added</h1>
+        <?php if (!empty($booksResult = $recentlyAddedBooks)): ?>
             <?php include "components/books-container.php"; ?>
         <?php else: ?>
             <div class="start-page-content-message">
@@ -144,4 +161,5 @@
     <?php
         include "components/footer.php";
     ?>
+    <script type="text/javascript" src="public/js/scroll-top.js"></script>
 </body>

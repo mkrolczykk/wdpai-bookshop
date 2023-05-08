@@ -17,7 +17,7 @@
     flex-direction: column;
     background-color: white;
     width: calc(20% - 16px);
-    min-height: 300px;
+    min-height: 350px;
     min-width: 220px;
     margin: 0px 8px 20px 8px;
     justify-content: center;

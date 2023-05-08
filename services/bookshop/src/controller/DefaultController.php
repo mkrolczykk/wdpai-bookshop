@@ -27,14 +27,16 @@ class DefaultController extends AppController {
     public function index()
     {
 
+        $totalBooks = $this->bookRepository->countBooks();
         $bookCategories = $this->bookGenreRepository->getBookGenres();
         $topSoldBooks = $this->bookOrderHistoryRepository->getTopSoldBooks(10);
         $recentlyAddedBooks = $this->bookRepository->getRecentlyAddedBooks(20);
 
         if (!$this->isPost()) {
             return $this->render('start-page', [
+                    'totalBooks' => $totalBooks,
                     'bookCategories' => $bookCategories,
-                    'topSelledBooks' => $topSoldBooks,
+                    'topSoldBooks' => $topSoldBooks,
                     'recentlyAddedBooks' => $recentlyAddedBooks
             ]);
         }

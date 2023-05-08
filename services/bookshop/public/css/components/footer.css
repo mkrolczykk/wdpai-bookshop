@@ -158,6 +158,7 @@
 
     .footer-contact-info {
         justify-content: center;
+        margin-top: 5%;
     }
 
     .footer-menu {
@@ -185,6 +186,7 @@
 
     .footer-contact-info {
         justify-content: flex-start;
+        margin-top: unset;
     }
 
     .footer-menu {

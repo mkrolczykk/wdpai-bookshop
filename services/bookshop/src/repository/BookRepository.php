@@ -49,6 +49,19 @@ class BookRepository extends Repository
         return $result;
     }
 
+    public function countBooks(): int {
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT COUNT(*) as count FROM book
+        ');
+
+        $stmt->execute();
+
+        $count = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return (int)$count['count'];
+    }
+
     public function getRecentlyAddedBooks(int $limit): array {
 
         $result = [];

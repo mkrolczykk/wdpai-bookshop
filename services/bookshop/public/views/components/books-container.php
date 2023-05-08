@@ -6,7 +6,7 @@
                         if ($book->getCover()) {
                             echo '<a href="bookDetail?bookTitle=' . str_replace(' ', '-', strtolower($book->getTitle())) . '"><img class="book-cover" src="data:image/png;base64,' . base64_encode(stream_get_contents($book->getCover())) . '" alt="Book cover"></a>';
                         } else {
-                            echo '<a href="bookDetail?bookTitle=' . str_replace(' ', '-', strtolower($book->getTitle())) . '"><img class="book-cover" src="public/img/default-cover.png"></a>';
+                            echo '<a href="bookDetail?bookTitle=' . str_replace(' ', '-', strtolower($book->getTitle())) . '"><img class="book-cover" src="public/img/mock-cover2.png"></a>';
                         }
                     ?>
                     <div class="book-description">
