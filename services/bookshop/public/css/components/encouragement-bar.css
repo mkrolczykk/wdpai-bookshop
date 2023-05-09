@@ -46,6 +46,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        min-height: 200px;
     }
 
     .encouragement-button {
@@ -55,6 +56,8 @@
     .encouragement-text {
         margin-right: unset;
         align-items: center;
+        display: flex;
+        gap: 20px;
     }
 
     .encouragement-text h2 {

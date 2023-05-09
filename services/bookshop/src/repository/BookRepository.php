@@ -111,4 +111,54 @@ class BookRepository extends Repository
         return $result;
     }
 
+    public function getCategoryRelatedBooks(string $categoryType, string $currency): array {
+
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+        SELECT 
+            book.title AS title, 
+            book.cover AS cover,
+            STRING_AGG(author.author_name, \', \') AS authors,
+            book_price.price AS price, 
+            currency.shortcut AS currency
+        FROM book
+        JOIN book_author ON book.book_id = book_author.book_id
+        JOIN author ON author.author_id = book_author.author_id
+        JOIN book_price ON book.book_id = book_price.book_id
+        JOIN currency ON book_price.currency_id = currency.currency_id
+        JOIN book_genre ON book_genre.genre_id = book.genre_id
+        WHERE
+            LOWER(book_genre.genre) = LOWER(:categoryType) AND
+            currency.shortcut = :currency
+        GROUP BY 
+            book.book_id, 
+            book.title, 
+            book_price.price, 
+            currency.shortcut, 
+            book.created_at
+        ORDER BY 
+            book.created_at DESC
+    ');
+
+        $stmt->bindParam(':categoryType', $categoryType, PDO::PARAM_STR);
+        $stmt->bindParam(':currency', $currency, PDO::PARAM_STR);
+
+        $stmt->execute();
+        $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($books as $book) {
+            $result[] = new BookResp(
+                $book['title'],
+                $book['cover'],
+                $book['authors'],
+                $book['price'],
+                $book['currency']
+            );
+        }
+
+        return $result;
+    }
+
+
 }
