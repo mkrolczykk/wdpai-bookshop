@@ -45,7 +45,7 @@
     <?php endif; ?>
     <div class="customer-service">
         <div class="phone-number">
-            <p>Customer Service</p>
+            <p>Customer Support</p>
             <h5>+18 26 248 54</h5>
         </div>
     </div>
