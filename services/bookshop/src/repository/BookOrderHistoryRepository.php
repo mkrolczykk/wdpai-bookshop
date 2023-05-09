@@ -36,7 +36,6 @@ class BookOrderHistoryRepository extends Repository {
                     ol.book_id
                 ORDER BY 
                     total_amount DESC
-                LIMIT :limit
             ) AS sales ON book.book_id = sales.book_id
             WHERE 
                 book.created_at <= NOW() AND
