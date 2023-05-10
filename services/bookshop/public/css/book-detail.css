@@ -1,0 +1,324 @@
+.book-detail-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #F2F2F2;
+    padding: 2.5% 5%;
+}
+
+.book-detail-content-book {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.book-detail-content-upper-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    gap: 25px;
+}
+
+.book-detail-content-upper-section-cover {
+    display: flex;
+    height: 70%;
+    min-width: 300px;
+    min-height: 410px;
+    background-color: #F9F9F9;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-detail-content-upper-section-cover-image {
+    max-width: 250px;
+    max-height: 360px;
+}
+
+.book-detail-content-upper-section-cover img {
+    width: 100%;
+    height: 100%;
+}
+
+.book-detail-content-upper-section-book-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 60%;
+    flex-grow: 1;
+    background: #F9F9F9;
+    gap: 15px;
+}
+
+.book-detail-content-upper-section-book-details h1 {
+    color: #3D464D;
+    font-size: 2rem;
+    font-weight: 600;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.book-detail-content-upper-section-book-details h2 {
+    color: #3D464D;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.book-detail-content-upper-section-book-details h3 {
+    color: #3D464D;
+    font-weight: bold;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.book-detail-content-upper-section-book-details h3 span {
+    color: #693FDF;
+}
+
+.summary-text {
+    line-height: 1.6;
+    flex-grow: 1;
+    text-align: left;
+    align-self: flex-start;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.book-detail-content-upper-section-book-details p {
+    color: #3D464D;
+    max-width: 1000px;
+}
+
+.book-detail-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.book-detail-section-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 25px;
+}
+
+.book-detail-section-info h3 {
+    margin-bottom: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.book-detail-section-info p {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.book-detail-section-buttons {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.shopping-cart-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px 16px;
+    background-color: #C72E56;
+    font-family: inherit;
+    margin: 0;
+    text-transform: none;
+}
+
+.shopping-cart-button i {
+    margin-right: 5px;
+}
+
+.shopping-cart-button:hover {
+    background-color: red;
+}
+
+.shopping-cart-button a {
+    text-decoration: none;
+}
+
+.favorite-button {
+    color: #3D464D;
+    font-weight: 600;
+    text-transform: none;
+}
+
+.favorite-button i {
+    margin-right: 5px;
+}
+
+.favorite-button:hover i {
+    cursor: pointer;
+    color: red;
+}
+
+.shopping-cart-button a {
+    text-decoration: none;
+}
+
+.book-detail-content-down-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #F9F9F9;
+    width: 100%;
+    height: 30%;
+    flex-grow: 1;
+}
+
+.book-detail-content-down-section h1 {
+    color: #3D464D;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 25px;
+}
+
+.book-detail-content-down-section p {
+    color: #3D464D;
+    padding: 0 25px 25px 25px;
+    text-align: justify;
+    hyphens: auto;
+    word-break: break-word;
+    line-height: 1.6;
+}
+
+.book-detail-content-message {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    color: #3D464D;
+}
+
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (max-width : 576px) {
+    .book-detail-content {
+        padding-bottom: 25px;
+    }
+
+    .book-detail-content-message {
+        min-height: 75px;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+
+    .book-detail-content-upper-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .book-detail-content-upper-section-book-details {
+        width: 100%;
+    }
+
+    .book-detail-section-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        margin-bottom: 25px;
+    }
+
+    .book-detail-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (min-width: 577px) {
+
+    .book-detail-content-upper-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .book-detail-content-upper-section-book-details {
+        width: 100%;
+    }
+
+    .book-detail-content-message {
+        min-height: 100px;
+        max-width: 1200px;
+        justify-content: center;
+    }
+
+    .book-detail-section-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (min-width: 768px) {
+    .book-detail-section-buttons {
+        display: flex;
+        flex-direction: row;
+        gap: 25px;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width: 992px) {
+    .book-detail-content-upper-section {
+        flex-direction: row;
+    }
+
+    .book-detail-content-upper-section-book-details {
+        width: 60%;
+        height: 500px;
+    }
+
+    .book-detail-content-upper-section-book-details {
+        max-height: 410px;
+    }
+
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (min-width: 1200px) {
+    .book-detail-content-message {
+        padding-left: 60px;
+        justify-content: start;
+    }
+}
+
+/* hi-res laptops and desktops */
+@media (min-width: 1400px) {
+
+}

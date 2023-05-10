@@ -55,7 +55,7 @@
             <div class="contact-content-section-right-side">
                 <div class="contact-content-section-right-side-map">
                     <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.8775572272696!2d19.93932431605335!3d50.061299926847496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165dd514c3a7db%3A0x473bfb9e0e4b16f4!2sKrak%C3%B3w%20Rynek%20G%C5%82%C3%B3wny!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.8775572272696!2d19.93932431605335!3d50.061299926847496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165dd514c3a7db%3A0x473bfb9e0e4b16f4!2sKrak%C3%B3w%20Rynek%20G%C5%82%C3%B3wny!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd?q"
                             frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0">
                     </iframe>
                 </div>
