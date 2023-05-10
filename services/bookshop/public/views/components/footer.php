@@ -5,7 +5,7 @@
             <p class="footer-contact-text">Stay connected with us and never miss out on the latest news, updates, and exclusive offers. Follow us on social media and subscribe to our newsletter for more exciting content and special deals.</p>
             <p class="footer-contact-text"><i class="fa fa-envelope fa-lg footer-menu-icon"></i>bookshop@gmail.com</p>
             <p class="footer-contact-text"><i class="fa fa-phone fa-lg footer-menu-icon"></i>+18 26 248 54</p>
-            <p class="footer-contact-text"><i class="fa fa-map-marker fa-lg footer-menu-icon"></i>1234 Alaska, Hong Kong, Poland</p>
+            <p class="footer-contact-text"><i class="fa fa-map-marker-alt fa-lg footer-menu-icon"></i>1234 Alaska, Hong Kong, Poland</p>
         </div>
         <div class="footer-menu">
             <div class="footer-menu-nav">
