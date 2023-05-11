@@ -2,6 +2,7 @@
 
 require_once 'Repository.php';
 require_once __DIR__ . '/../model/response/BookResp.php';
+require_once __DIR__ . '/../model/response/BookDetailResp.php';
 
 class BookRepository extends Repository
 {
@@ -154,7 +155,7 @@ class BookRepository extends Repository
         return $result;
     }
 
-    public function getBookByTitle(string $title, string $currency): ?BookResp {
+    public function getBookByTitle(string $title, string $currency): ?BookDetailResp {
 
         $title = str_replace('-', ' ', $title);
 
@@ -162,21 +163,31 @@ class BookRepository extends Repository
         SELECT 
             book.title AS title, 
             STRING_AGG(author.author_name, \', \') AS authors,
+            book_genre.genre AS category,
+            book.summary AS summary,
+            book.description AS description,
             book_price.price AS price, 
-            currency.shortcut AS currency
+            currency.shortcut AS currency,
+            book.num_pages AS numpages,
+            STRING_AGG(book_language.language_name, \', \') AS languages,
+            TO_CHAR(book.created_at::DATE, \'YYYY-MM-DD\') AS addedat
         FROM book
         JOIN book_author ON book.book_id = book_author.book_id
+        JOIN book_genre ON book.genre_id = book_genre.genre_id
         JOIN author ON author.author_id = book_author.author_id
         JOIN book_price ON book.book_id = book_price.book_id
+        JOIN book_language ON book.language_id = book_language.language_id
         JOIN currency ON book_price.currency_id = currency.currency_id
         WHERE
             LOWER(book.title) = LOWER(:title) AND
             currency.shortcut = :currency
         GROUP BY 
             book.book_id, 
-            book.title, 
+            book.title,
+            book_genre.genre,
             book_price.price, 
-            currency.shortcut, 
+            currency.shortcut,
+            book.num_pages,
             book.created_at
     ');
 
@@ -190,11 +201,17 @@ class BookRepository extends Repository
             return null;
         }
 
-        return new BookResp(
+        return new BookDetailResp(
             $book['title'],
             $book['authors'],
+            $book['category'],
+            $book['summary'],
+            $book['description'],
             $book['price'],
-            $book['currency']
+            $book['currency'],
+            $book['numpages'],
+            $book['languages'],
+            $book['addedat']
         );
 
     }

@@ -56,6 +56,10 @@
     gap: 15px;
 }
 
+.book-detail-content-upper-section-book-details h3 span {
+    margin-left: 3px;
+}
+
 .book-detail-content-upper-section-book-details h1 {
     color: #3D464D;
     font-size: 2rem;

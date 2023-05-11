@@ -24,6 +24,11 @@
     align-items: center;
 }
 
+.book-cover {
+    width: 150px;
+    height: 240px;
+}
+
 .book-cover:hover {
     transform: scale(1.05);
     opacity: 0.8;

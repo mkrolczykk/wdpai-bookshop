@@ -32,28 +32,33 @@
                 <div class="book-detail-content-upper-section">
                     <div class="book-detail-content-upper-section-cover">
                         <div class="book-detail-content-upper-section-cover-image">
-                            <img src="./public/img/books/mock-book-detail.png" class="book-detail-content-upper-section-cover-image" alt="Book cover">
+                            <?php
+                            $bookTitle = strtolower(str_replace(' ', '-', $bookResult->getTitle()));
+                            $coverImagePath = "./public/img/books/{$bookTitle}.png";
+
+                            if (file_exists($coverImagePath)) {
+                                echo '<img src="' . $coverImagePath . '" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
+                            } else {
+                                echo '<img src="./public/img/books/mock-book-detail-cover.png" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
+                            }
+                            ?>
                         </div>
                     </div>
                     <div class="book-detail-content-upper-section-book-details">
-                        <h1>Title 1</h1>
-                        <h2>A.J. Arberry</h2>
+                        <h1><?php echo $bookResult->getTitle() ?></h1>
+                        <h2><?php echo $bookResult->getAuthors() ?></h2>
+                        <h3>Category: <?php echo $bookResult->getCategory() ?></h3>
                         <h3>Summary</h3>
-                        <p class="summary-text">
-                            Release of Letraset sheets containing Lorem Ipsum passages,
-                            and more recently with desktop publishing software.
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                        </p>
-                        <h3>Price: <span>150 PLN</span></h3>
+                        <p class="summary-text"><?php echo $bookResult->getSummary() ?></p>
                         <h3>
-                            Book available: <span>Yes</span>
+                            Price: <span><?= $bookResult->getPrice(); echo ' '; echo $bookResult->getCurrency();?></span>, available: <span><i class="fa fa-check fa-lg" aria-hidden="true"></i></span>
                         </h3>
                         <div class="book-detail-section">
                             <div class="book-detail-section-info">
                                 <h3>Product detail</h3>
-                                <p>Pages: 344</p>
-                                <p>Language: PL</p>
-                                <p>Available since: 23.03.2017</p>
+                                <p>Pages: <?php echo $bookResult->getNumPages() ?></p>
+                                <p>Languages: <?php echo $bookResult->getLanguages() ?></p>
+                                <p>Added at: <?php echo $bookResult->getAddedAt() ?></p>
                             </div>
                             <div class="book-detail-section-buttons">
                                 <div class="shopping-cart-button button">
@@ -70,15 +75,7 @@
                 </div>
                 <div class="book-detail-content-down-section">
                     <h1>Book description</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 150
-                        0s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                        essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-                        versions of Lorem Ipsum.
-                    </p>
+                    <p><?php echo $bookResult->getDescription() ?></p>
                 </div>
             </div>
         <?php else: ?>

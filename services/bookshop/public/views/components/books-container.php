@@ -9,7 +9,7 @@
                         if (file_exists($coverPath)) {
                             $coverSrc = $coverPath;
                         } else {
-                            $coverSrc = 'public/img/books/mock-cover2.png';
+                            $coverSrc = 'public/img/books/mock-book-cover.png';
                         }
 
                         echo '<a href="bookDetail?bookTitle=' . $bookTitle . '"><img class="book-cover" src="' . $coverSrc . '" alt="Book cover"></a>';
