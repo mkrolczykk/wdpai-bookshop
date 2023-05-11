@@ -161,6 +161,7 @@ class BookRepository extends Repository
 
         $stmt = $this->database->connect()->prepare('
         SELECT 
+            book.book_id AS bookid,
             book.title AS title, 
             STRING_AGG(author.author_name, \', \') AS authors,
             book_genre.genre AS category,
@@ -202,6 +203,7 @@ class BookRepository extends Repository
         }
 
         return new BookDetailResp(
+            $book['bookid'],
             $book['title'],
             $book['authors'],
             $book['category'],

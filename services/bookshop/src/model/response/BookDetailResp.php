@@ -2,6 +2,8 @@
 
 class BookDetailResp {
 
+    private $bookId;
+
     private $title;
 
     private $authors;
@@ -22,8 +24,9 @@ class BookDetailResp {
 
     private $addedAt;
 
-    public function __construct($title, $authors, $category, $summary, $description, $price, $currency, $numPages, $languages, $addedAt)
+    public function __construct($bookId, $title, $authors, $category, $summary, $description, $price, $currency, $numPages, $languages, $addedAt)
     {
+        $this->bookId = $bookId;
         $this->title = $title;
         $this->authors = $authors;
         $this->category = $category;
@@ -34,6 +37,11 @@ class BookDetailResp {
         $this->numPages = $numPages;
         $this->languages = $languages;
         $this->addedAt = $addedAt;
+    }
+
+    public function getBookId()
+    {
+        return $this->bookId;
     }
 
     public function getTitle()
