@@ -19,7 +19,21 @@
             }
         ?>
         <a href="<?php echo $redirectUrl ?>">
-            <span>Book Shop</span>
+            <?php
+            $roleText = '';
+
+            if (!isset($_SESSION["authenticated"])) {
+                $roleText = "Book Shop";
+            } elseif ($_SESSION["authenticated"] && $_SESSION["roleId"] === Role::ROLE_USER) {
+                $roleText = "Book Shop";
+            } elseif ($_SESSION["authenticated"] && $_SESSION["roleId"] === Role::ROLE_EMPLOYEE) {
+                $roleText = "Employee Panel";
+            } elseif ($_SESSION["authenticated"] && $_SESSION["roleId"] === Role::ROLE_ADMIN) {
+                $roleText = "Admin Panel";
+            }
+            ?>
+
+            <span><?php echo $roleText; ?></span>
         </a>
     </div>
     <?php if (!isset($_SESSION["authenticated"]) || $_SESSION["roleId"] === Role::ROLE_USER): ?>

@@ -30,18 +30,18 @@
                     <a href="/newBooks" class="menu-navigation-pages-page">New books</a>
                     <a href="/bestsellers" class="menu-navigation-pages-page">Bestsellers</a>
                     <a href="/contact" class="menu-navigation-pages-page">Contact</a>
-                <?php elseif ($_SESSION["authenticated"] === true &&
+                <?php elseif ($_SESSION["authenticated"] &&
                               $_SESSION["roleId"] === Role::ROLE_USER): ?>
                     <a href="/userDashboard" class="menu-navigation-pages-page">Dashboard</a>
                     <a href="/explore" class="menu-navigation-pages-page">Explore books</a>
                     <a href="/shopping" class="menu-navigation-pages-page">Shopping</a>
                     <a href="/contact" class="menu-navigation-pages-page">Contact</a>
-                <?php elseif ($_SESSION["authenticated"] === true &&
+                <?php elseif ($_SESSION["authenticated"] &&
                               $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
                     <a href="/orders" class="menu-navigation-pages-page">Orders</a>
                     <a href="/addBook" class="menu-navigation-pages-page">Add book</a>
                     <a href="/contact" class="menu-navigation-pages-page">Contact</a>
-                <?php elseif ($_SESSION["authenticated"] === true &&
+                <?php elseif ($_SESSION["authenticated"] &&
                               $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                     <a href="/orders" class="menu-navigation-pages-page">Orders</a>
                     <a href="/addBook" class="menu-navigation-pages-page">Add book</a>

@@ -21,23 +21,25 @@
                             array("/register", "Register")
                         );
 
+                    if (!isset($_SESSION["authenticated"])):
                         foreach($menuResult as $menu) {
                             echo '<a href="' . $menu[0] . '" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>' . $menu[1] . '</a>';
                         }
+                    endif;
                     ?>
                     <?php if (isset($_SESSION["authenticated"])): ?>
-                        <?php if ($_SESSION["authenticated"] === true &&
+                        <?php if ($_SESSION["authenticated"] &&
                                   $_SESSION["roleId"] === Role::ROLE_USER): ?>
                             <a href="/userDashboard" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Dashboard</a>
                             <a href="/explore" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Explore books</a>
                             <a href="/shopping" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Shopping</a>
                             <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
-                        <?php elseif ($_SESSION["authenticated"] === true &&
+                        <?php elseif ($_SESSION["authenticated"] &&
                                       $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
                             <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
                             <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
                             <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
-                        <?php elseif ($_SESSION["authenticated"] === true &&
+                        <?php elseif ($_SESSION["authenticated"] &&
                                       $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                             <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
                             <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
@@ -56,21 +58,21 @@
                 <div class="footer-media-button button">
                     <a href="/register">Register</a>
                 </div>
-            <?php elseif ($_SESSION["authenticated"] === true &&
+            <?php elseif ($_SESSION["authenticated"] &&
                           $_SESSION["roleId"] === Role::ROLE_USER): ?>
                 <h5 class="footer-subtitle">Thank you for being with us!</h5>
                 <p class="footer-media-text">We really appreciate your effort</p>
                 <div class="footer-media-button button">
                     <a href="/products">Browse our products</a>
                 </div>
-            <?php elseif ($_SESSION["authenticated"] === true &&
+            <?php elseif ($_SESSION["authenticated"] &&
                           $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
                 <h5 class="footer-subtitle">Employee panel</h5>
                 <p class="footer-media-text">We really appreciate your effort</p>
                 <div class="footer-media-button button">
                     <a href="/orders">Fulfill orders</a>
                 </div>
-            <?php elseif ($_SESSION["authenticated"] === true &&
+            <?php elseif ($_SESSION["authenticated"] &&
                           $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                 <h5 class="footer-subtitle">Administrator panel</h5>
                 <p class="footer-media-text">Book shop admin panel</p>
