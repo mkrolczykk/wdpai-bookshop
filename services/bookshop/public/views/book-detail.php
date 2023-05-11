@@ -33,14 +33,14 @@
                     <div class="book-detail-content-upper-section-cover">
                         <div class="book-detail-content-upper-section-cover-image">
                             <?php
-                            $bookTitle = strtolower(str_replace(' ', '-', $bookResult->getTitle()));
-                            $coverImagePath = "./public/img/books/{$bookTitle}.png";
+                                $bookTitle = strtolower(str_replace(' ', '-', $bookResult->getTitle()));
+                                $coverImagePath = "./public/img/books/{$bookTitle}.png";
 
-                            if (file_exists($coverImagePath)) {
-                                echo '<img src="' . $coverImagePath . '" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
-                            } else {
-                                echo '<img src="./public/img/books/mock-book-detail-cover.png" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
-                            }
+                                if (file_exists($coverImagePath)) {
+                                    echo '<img src="' . $coverImagePath . '" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
+                                } else {
+                                    echo '<img src="./public/img/books/mock-book-detail-cover.png" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
+                                }
                             ?>
                         </div>
                     </div>
