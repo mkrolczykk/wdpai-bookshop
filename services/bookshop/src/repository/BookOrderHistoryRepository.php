@@ -12,7 +12,6 @@ class BookOrderHistoryRepository extends Repository {
         $stmt = $this->database->connect()->prepare('
             SELECT
                 book.title AS title, 
-                book.cover AS cover,
                 STRING_AGG(author.author_name, \', \') AS authors,
                 book_price.price AS price, 
                 currency.shortcut AS currency,
@@ -61,7 +60,6 @@ class BookOrderHistoryRepository extends Repository {
         foreach ($books as $book) {
             $result[] = new BookResp(
                 $book['title'],
-                $book['cover'],
                 $book['authors'],
                 $book['price'],
                 $book['currency']

@@ -4,18 +4,15 @@ class BookResp {
 
     private $title;
 
-    private $cover;
-
     private $authors;
 
     private $price;
 
     private $currency;
 
-    public function __construct($title, $cover, $authors, $price, $currency)
+    public function __construct($title, $authors, $price, $currency)
     {
         $this->title = $title;
-        $this->cover = $cover;
         $this->authors = $authors;
         $this->price = $price;
         $this->currency = $currency;
@@ -24,11 +21,6 @@ class BookResp {
     public function getTitle()
     {
         return $this->title;
-    }
-
-    public function getCover()
-    {
-        return $this->cover;
     }
 
     public function getAuthors()

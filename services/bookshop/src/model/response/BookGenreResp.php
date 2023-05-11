@@ -6,21 +6,17 @@ class BookGenreResp implements JsonSerializable {
 
     private $genre;
 
-    private $thumbnail;
-
-    public function __construct($genreId, $genre, $thumbnail)
+    public function __construct($genreId, $genre)
     {
         $this->genreId = $genreId;
         $this->genre = $genre;
-        $this->thumbnail = $thumbnail;
     }
 
     public function jsonSerialize()
     {
         return [
             'genreId' => $this->genreId,
-            'genre' => $this->genre,
-            'thumbnail' => $this->thumbnail
+            'genre' => $this->genre
         ];
     }
 
@@ -34,8 +30,4 @@ class BookGenreResp implements JsonSerializable {
         return $this->genre;
     }
 
-    public function getThumbnail()
-    {
-        return $this->thumbnail;
-    }
 }

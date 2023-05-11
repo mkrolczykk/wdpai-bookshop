@@ -12,8 +12,7 @@ class BookGenreRepository extends Repository {
         $stmt = $this->database->connect()->prepare('
             SELECT 
                 genre_id AS genreId,
-                genre,
-                thumbnail
+                genre
             FROM book_genre
         ');
 
@@ -23,8 +22,7 @@ class BookGenreRepository extends Repository {
         foreach ($genres as $genre) {
             $result[] = new BookGenreResp(
                 $genre['genreId'],
-                $genre['genre'],
-                $genre['thumbnail']
+                $genre['genre']
             );
         }
 

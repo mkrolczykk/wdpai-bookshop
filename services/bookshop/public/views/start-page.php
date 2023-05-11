@@ -101,22 +101,30 @@
             ?>
         </section>
         <?php
-        $categoriesHtml = '';
-        foreach ($bookCategories as $category) {
-            $thumbnailSrc = $category->getThumbnail() ?: 'public/img/mock-cover.png';
-            $categoryLink = '/category?type=' . strtolower(str_replace(' ', '-', $category->getGenre()));
-            $categoryHtml = sprintf(
-                '<a href="%s" class="start-page-content-books-categories-container-category">
-                            <img src="%s" alt="%s">
-                            <h2>%s</h2>
-                        </a>',
-                $categoryLink,
-                $thumbnailSrc,
-                $category->getGenre(),
-                $category->getGenre()
-            );
-            $categoriesHtml .= $categoryHtml;
-        }
+            $categoriesHtml = '';
+            foreach ($bookCategories as $category) {
+                $genre = strtolower(str_replace(' ', '-', $category->getGenre()));
+                $thumbnailPath = 'public/img/categories/' . $genre . '.png';
+
+                if (file_exists($thumbnailPath)) {
+                    $thumbnailSrc = $thumbnailPath;
+                } else {
+                    $thumbnailSrc = 'public/img/categories/default-cover.png';
+                }
+
+                $categoryLink = '/category?type=' . $genre;
+                $categoryHtml = sprintf(
+                    '<a href="%s" class="start-page-content-books-categories-container-category">
+                                <img src="%s" alt="%s">
+                                <h2>%s</h2>
+                            </a>',
+                            $categoryLink,
+                            $thumbnailSrc,
+                            $category->getGenre(),
+                            $category->getGenre()
+                );
+                $categoriesHtml .= $categoryHtml;
+            }
         ?>
         <section class="start-page-content-categories">
             <section class="start-page-content-books-categories">

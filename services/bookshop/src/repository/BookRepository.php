@@ -11,8 +11,7 @@ class BookRepository extends Repository
 
         $stmt = $this->database->connect()->prepare('
             SELECT 
-                book.title AS title, 
-                book.cover AS cover,
+                book.title AS title,
                 STRING_AGG(author.author_name, \', \') AS authors,
                 book_price.price AS price, 
                 currency.shortcut AS currency
@@ -39,7 +38,6 @@ class BookRepository extends Repository
         foreach ($books as $book) {
             $result[] = new BookResp(
                 $book['title'],
-                $book['cover'],
                 $book['authors'],
                 $book['price'],
                 $book['currency']
@@ -68,8 +66,7 @@ class BookRepository extends Repository
 
         $stmt = $this->database->connect()->prepare('
             SELECT 
-                book.title AS title, 
-                book.cover AS cover,
+                book.title AS title,
                 STRING_AGG(author.author_name, \', \') AS authors,
                 book_price.price AS price, 
                 currency.shortcut AS currency
@@ -101,7 +98,6 @@ class BookRepository extends Repository
         foreach ($books as $book) {
             $result[] = new BookResp(
                 $book['title'],
-                $book['cover'],
                 $book['authors'],
                 $book['price'],
                 $book['currency']
@@ -118,7 +114,6 @@ class BookRepository extends Repository
         $stmt = $this->database->connect()->prepare('
         SELECT 
             book.title AS title, 
-            book.cover AS cover,
             STRING_AGG(author.author_name, \', \') AS authors,
             book_price.price AS price, 
             currency.shortcut AS currency
@@ -150,7 +145,6 @@ class BookRepository extends Repository
         foreach ($books as $book) {
             $result[] = new BookResp(
                 $book['title'],
-                $book['cover'],
                 $book['authors'],
                 $book['price'],
                 $book['currency']
@@ -167,7 +161,6 @@ class BookRepository extends Repository
         $stmt = $this->database->connect()->prepare('
         SELECT 
             book.title AS title, 
-            book.cover AS cover,
             STRING_AGG(author.author_name, \', \') AS authors,
             book_price.price AS price, 
             currency.shortcut AS currency
@@ -199,7 +192,6 @@ class BookRepository extends Repository
 
         return new BookResp(
             $book['title'],
-            $book['cover'],
             $book['authors'],
             $book['price'],
             $book['currency']

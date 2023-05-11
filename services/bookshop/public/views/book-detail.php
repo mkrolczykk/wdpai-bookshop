@@ -32,7 +32,7 @@
                 <div class="book-detail-content-upper-section">
                     <div class="book-detail-content-upper-section-cover">
                         <div class="book-detail-content-upper-section-cover-image">
-                            <img src="./public/img/mock-book-detail.png" class="book-detail-content-upper-section-cover-image" alt="Book cover">
+                            <img src="./public/img/books/mock-book-detail.png" class="book-detail-content-upper-section-cover-image" alt="Book cover">
                         </div>
                     </div>
                     <div class="book-detail-content-upper-section-book-details">

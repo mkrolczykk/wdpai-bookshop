@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>New books</title>
+    <title>Bestsellers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="public/css/style.css">

@@ -57,9 +57,6 @@
             <column name="genre" type="VARCHAR(50)" remarks="Genre name">
                 <constraints nullable="false"/>
             </column>
-            <column name="thumbnail" type="BYTEA" remarks="Thumbnail for genre">
-                <constraints nullable="true"/>
-            </column>
             <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP" remarks="Stores the date and time at which the genre is created">
                 <constraints nullable="false"/>
             </column>
