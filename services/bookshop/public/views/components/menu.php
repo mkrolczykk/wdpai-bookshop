@@ -38,13 +38,13 @@
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
-                    <a href="/orders" class="menu-navigation-pages-page">Orders</a>
+                    <a href="/employeeDashboard" class="menu-navigation-pages-page">Orders</a>
                     <a href="/addBook" class="menu-navigation-pages-page">Add book</a>
                     <a href="/contact" class="menu-navigation-pages-page">Contact</a>
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
-                    <a href="/orders" class="menu-navigation-pages-page">Orders</a>
+                    <a href="/adminDashboard" class="menu-navigation-pages-page">Orders</a>
                     <a href="/addBook" class="menu-navigation-pages-page">Add book</a>
                     <a href="/addEmployee" class="menu-navigation-pages-page">Add employee</a>
                 <?php endif; ?>
@@ -98,7 +98,7 @@
                     <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
                         <?php
                             $menuResult = array(
-                                array("Orders", "/orders"),
+                                array("Orders", "/employeeDashboard"),
                                 array("Add book", "/addBook"),
                                 array("Contact", "/contact")
                             );
@@ -111,7 +111,7 @@
                     <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                         <?php
                             $menuResult = array(
-                                array("Orders", "/orders"),
+                                array("Orders", "/adminDashboard"),
                                 array("Add book", "/addBook"),
                                 array("Add employee", "/addEmployee")
                             );

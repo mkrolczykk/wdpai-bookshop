@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="public/css/user-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="public/css/admin-dashboard.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/topbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/navbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/menu.css">
@@ -22,17 +22,17 @@
         include "components/navbar.php";
         include "components/menu.php";
     ?>
-    <div class="user-dashboard-content">
+    <div class="admin-dashboard-content">
         <?php
             include "components/welcome-message.php";
         ?>
-        <section class="user-dashboard-content-favorite-books">
-            <h1 class="page-section-title user-dashboard-content-favorite-books-title">My recently saved books</h1>
-            <?php if (!empty($booksResult = $userFavoriteBooks)): ?>
-                <?php include "components/books-container.php"; ?>
+        <section class="admin-dashboard-content-orders-history">
+            <h1 class="page-section-title admin-dashboard-content-orders-history-title">Orders to be fulfilled</h1>
+            <?php if (!empty($orders = $pendingOrdersResult)): ?>
+                <?php include "components/orders-container.php"; ?>
             <?php else: ?>
-                <div class="user-dashboard-content-message">
-                    No favorite books :(
+                <div class="admin-dashboard-content-message">
+                    No pending orders, we're all set up :)
                 </div>
             <?php endif; ?>
         </section>

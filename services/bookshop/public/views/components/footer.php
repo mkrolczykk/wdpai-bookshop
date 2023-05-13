@@ -39,13 +39,13 @@
                                 ';
                             } elseif ($_SESSION["roleId"] === Role::ROLE_EMPLOYEE) {
                                 echo '
-                                    <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
+                                    <a href="/employeeDashboard" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
                                     <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
                                     <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
                                 ';
                             } elseif ($_SESSION["roleId"] === Role::ROLE_ADMIN) {
                                 echo '
-                                    <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
+                                    <a href="/adminDashboard" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
                                     <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
                                     <a href="/addEmployee" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add employee</a>
                                 ';
@@ -74,14 +74,14 @@
                 <h5 class="footer-subtitle">Employee panel</h5>
                 <p class="footer-media-text">We really appreciate your effort</p>
                 <div class="footer-media-button button">
-                    <a href="/orders">Fulfill orders</a>
+                    <a href="/employeeDashboard">Fulfill orders</a>
                 </div>
             <?php elseif ($_SESSION["authenticated"] &&
                           $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                 <h5 class="footer-subtitle">Administrator panel</h5>
                 <p class="footer-media-text">Book shop admin panel</p>
                 <div class="footer-media-button button">
-                    <a href="/addBook">Add book</a>
+                    <a href="/addEmployee">Add Employee</a>
                 </div>
             <?php endif; ?>
             <h6 class="footer-subtitle">Find us on social media</h6>
