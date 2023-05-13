@@ -19,7 +19,7 @@ class NewBooksController extends AppController {
     public function newBooks()
     {
 
-        $recentlyAddedBooks = $this->bookRepository->getRecentlyAddedBooks(40, $_SESSION["currency"]);
+        $recentlyAddedBooks = $this->bookRepository->getRecentlyAddedBooks(40, $_SESSION["authenticated"] ? $_SESSION["currency"] : "USD");
 
         if (!$this->isPost()) {
             return $this->render('new-books', [

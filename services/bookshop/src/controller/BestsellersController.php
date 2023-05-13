@@ -19,7 +19,7 @@ class BestsellersController extends AppController {
     public function bestsellers()
     {
 
-        $topSoldBooks = $this->bookOrderHistoryRepository->getTopSoldBooks(40, $_SESSION["currency"]);
+        $topSoldBooks = $this->bookOrderHistoryRepository->getTopSoldBooks(40, $_SESSION["authenticated"] ? $_SESSION["currency"] : "USD");
 
         if (!$this->isPost()) {
             return $this->render('bestsellers', [
