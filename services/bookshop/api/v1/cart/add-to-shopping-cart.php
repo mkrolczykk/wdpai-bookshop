@@ -11,10 +11,12 @@ $shoppingCartController = new ShoppingCartController();
 
 if(
     $_SERVER["REQUEST_METHOD"] == "POST" &&
-    $_SESSION["authenticated"] &&
+    isset($_SESSION["authenticated"]) &&
     $_SESSION["roleId"] == Role::ROLE_USER) {
 
-    echo $shoppingCartController->addToShoppingCart($_POST['bookId'], $_POST['amount']);
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    echo $shoppingCartController->addToShoppingCart($data['bookId'], $data['amount']);
 } else {
     echo json_encode(array("status" => 405 , "message" => 'Method not allowed'));
 }

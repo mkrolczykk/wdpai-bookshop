@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="public/css/components/topbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/navbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/menu.css">
-    <link rel="stylesheet" type="text/css" href="public/css/components/books-container.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/encouragement-bar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/footer.css">
 
@@ -61,14 +60,32 @@
                                 <p>Added at: <?php echo $bookResult->getAddedAt() ?></p>
                             </div>
                             <div class="book-detail-section-buttons">
-                                <div class="shopping-cart-button button">
-                                    <i class="fa fa-shopping-cart fa-lg"></i>
-                                    <a href="/login">Add to cart</a>
+                                <span>Amount</span>
+                                <div class="amount-button">
+                                    <i class="minus fa fa-minus"></i>
+                                    <span class="amount">01</span>
+                                    <i class="plus fa fa-plus fa-lg"></i>
                                 </div>
-                                <div class="favorite-button button">
-                                    <i class="fa fa-heart fa-lg"></i>
-                                    <a>Add to favorites</a>
-                                </div>
+                                <?php if (!isset($_SESSION["authenticated"])): ?>
+                                    <div class="shopping-cart-button button" onclick="redirectToLogin()">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <a href="/login">Add to cart</a>
+                                    </div>
+                                    <div class="favorite-button button" onclick="redirectToLogin()">
+                                        <i class="fa fa-heart fa-lg"></i>
+                                        <a href="/login">Add to favorites</a>
+                                    </div>
+                                <?php elseif ($_SESSION["authenticated"] &&
+                                $_SESSION["roleId"] === Role::ROLE_USER): ?>
+                                    <div class="shopping-cart-button button" onclick="addToShoppingCart('<?php echo $bookResult->getBookId(); ?>')">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <a>Add to cart</a>
+                                    </div>
+                                    <div class="favorite-button button" onclick="addToFavorites('<?php echo $bookResult->getBookId(); ?>')">
+                                        <i class="fa fa-heart fa-lg"></i>
+                                        <a>Add to favorites</a>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -89,8 +106,14 @@
         <?php endif; ?>
     </section>
     <?php
-        include "components/encouragement-bar.php";
+        if (!isset($_SESSION["authenticated"])) {
+            include "components/encouragement-bar.php";
+        }
         include "components/footer.php";
     ?>
     <script type="text/javascript" src="public/js/scroll-top.js"></script>
+    <script type="text/javascript" src="public/js/cart/amount-button.js"></script>
+    <script type="text/javascript" src="public/js/cart/add-to-shopping-cart.js"></script>
+    <script type="text/javascript" src="public/js/favorites/add-to-favorites.js"></script>
+    <script type="text/javascript" src="public/js/redirect-to-login.js"></script>
 </body>

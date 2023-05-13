@@ -32,4 +32,19 @@ class FavoriteBooksRepository extends Repository {
         return ($stmt->rowCount() > 0);
     }
 
+    public function getFavoriteBooksCount(string $userId): int {
+        $countStmt = $this->database->connect()->prepare('
+            SELECT COUNT(*) AS favoritecount
+            FROM system_user_favorite_book
+            WHERE user_id = :userId
+        ');
+
+        $countStmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $countStmt->execute();
+
+        $result = $countStmt->fetch(PDO::FETCH_ASSOC);
+
+        return (int) $result['favoritecount'];
+    }
+
 }

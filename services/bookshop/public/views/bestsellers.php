@@ -14,10 +14,6 @@
     <link rel="stylesheet" type="text/css" href="public/css/components/encouragement-bar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/footer.css">
 
-    <script type="text/javascript" src="public/js/topbar.js"></script>
-    <script type="text/javascript" src="public/js/menu.js"></script>
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -41,7 +37,9 @@
             <?php endif; ?>
         </section>
     <?php
-        include "components/encouragement-bar.php";
+        if (!isset($_SESSION["authenticated"])) {
+            include "components/encouragement-bar.php";
+        }
         include "components/footer.php";
     ?>
     <script type="text/javascript" src="public/js/scroll-top.js"></script>

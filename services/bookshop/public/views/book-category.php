@@ -41,7 +41,9 @@
         <?php endif; ?>
     </section>
     <?php
-        include "components/encouragement-bar.php";
+        if (!isset($_SESSION["authenticated"])) {
+            include "components/encouragement-bar.php";
+        }
         include "components/footer.php";
     ?>
     <script type="text/javascript" src="public/js/scroll-top.js"></script>

@@ -134,6 +134,10 @@
     align-items: center;
 }
 
+.book-detail-section-buttons span {
+    color: #3D464D;
+}
+
 .shopping-cart-button {
     cursor: pointer;
     border: none;

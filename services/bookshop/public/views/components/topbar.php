@@ -82,4 +82,5 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="public/js/topbar.js"></script>
 </div>

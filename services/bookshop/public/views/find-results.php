@@ -41,7 +41,9 @@
         <?php endif; ?>
     </div>
     <?php
-        include "components/encouragement-bar.php";
+        if (!isset($_SESSION["authenticated"])) {
+            include "components/encouragement-bar.php";
+        }
         include "components/footer.php";
     ?>
 </body>

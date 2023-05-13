@@ -11,10 +11,12 @@ $favoriteBooksController = new FavoriteBooksController();
 
 if(
     $_SERVER["REQUEST_METHOD"] == "POST" &&
-    $_SESSION["authenticated"] &&
+    isset($_SESSION["authenticated"]) &&
     $_SESSION["roleId"] == Role::ROLE_USER) {
 
-    echo $favoriteBooksController->addToFavorites($_POST['bookId']);
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    echo $favoriteBooksController->addToFavorites($data['bookId']);
 } else {
     echo json_encode(array("status" => 405 , "message" => 'Method not allowed'));
 }

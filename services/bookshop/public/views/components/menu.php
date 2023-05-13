@@ -51,11 +51,11 @@
             </div>
             <?php if ($_SESSION["authenticated"] && $_SESSION["roleId"] === Role::ROLE_USER): ?>
                 <div class="menu-navigation-other">
-                    <a href="/" class="menu-navigation-other-favourite-books">
+                    <a href="/myFavorites" class="menu-navigation-other-favourite-books">
                         <i class="fa fa-heart fa-lg menu-navigation-other-favourite-books-icon"></i>
                         <span class="menu-navigation-other-favourite-books-value">0</span>
                     </a>
-                    <a href="/" class="menu-navigation-other-shopping-card">
+                    <a href="/shoppingCart" class="menu-navigation-other-shopping-card">
                         <i class="fa fa-shopping-cart fa-lg menu-navigation-other-shopping-card-icon"></i>
                         <span class="menu-navigation-other-shopping-card-value">0</span>
                     </a>
@@ -123,4 +123,7 @@
             </header>
         </nav>
     </div>
+    <script type="text/javascript" src="public/js/menu.js"></script>
+    <script type="text/javascript" src="public/js/favorites/get-favorite-books-count.js"></script>
+    <script type="text/javascript" src="public/js/cart/get-shopping-cart-items-count.js"></script>
 </div>

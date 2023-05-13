@@ -153,6 +153,7 @@ class SecurityController extends AppController {
         $_SESSION["name"] = $name;
         $_SESSION["username"] = $username;
         $_SESSION["roleId"] = $role;
+        $_SESSION["currency"] = "USD";
     }
 
 }
