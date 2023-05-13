@@ -70,42 +70,42 @@
                 <ul class="menu-mobile-header-menu">
                     <?php if (!isset($_SESSION["authenticated"])): ?>
                         <?php
-                        $menuResult = array(
-                            array("Start page", "/"),
-                            array("New books", "/newBooks"),
-                            array("Bestsellers", "/bestsellers"),
-                            array("Contact", "/contact")
-                        );
-                        foreach($menuResult as $menu) {
-                            echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
-                        }
+                            $menuResult = array(
+                                array("Start page", "/"),
+                                array("New books", "/newBooks"),
+                                array("Bestsellers", "/bestsellers"),
+                                array("Contact", "/contact")
+                            );
+                            foreach($menuResult as $menu) {
+                                echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
+                            }
                         ?>
-                    <?php elseif ($_SESSION["authenticated"] === true &&
+                    <?php elseif ($_SESSION["authenticated"] &&
                         $_SESSION["roleId"] === Role::ROLE_USER): ?>
                         <?php
-                        $menuResult = array(
-                            array("Dashboard", "/userDashboard"),
-                            array("Explore books", "/explore"),
-                            array("Shopping", "/shopping"),
-                            array("Contact", "/contact")
-                        );
-                        foreach($menuResult as $menu) {
-                            echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
-                        }
+                            $menuResult = array(
+                                array("Dashboard", "/userDashboard"),
+                                array("Explore books", "/explore"),
+                                array("Shopping", "/shopping"),
+                                array("Contact", "/contact")
+                            );
+                            foreach($menuResult as $menu) {
+                                echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
+                            }
                         ?>
-                    <?php elseif ($_SESSION["authenticated"] === true &&
+                    <?php elseif ($_SESSION["authenticated"] &&
                         $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
                         <?php
-                        $menuResult = array(
-                            array("Orders", "/orders"),
-                            array("Add book", "/addBook"),
-                            array("Contact", "/contact")
-                        );
-                        foreach($menuResult as $menu) {
-                            echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
-                        }
+                            $menuResult = array(
+                                array("Orders", "/orders"),
+                                array("Add book", "/addBook"),
+                                array("Contact", "/contact")
+                            );
+                            foreach($menuResult as $menu) {
+                                echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
+                            }
                         ?>
-                    <?php elseif ($_SESSION["authenticated"] === true &&
+                    <?php elseif ($_SESSION["authenticated"] &&
                             $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                         <?php
                             $menuResult = array(

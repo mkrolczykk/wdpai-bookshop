@@ -110,6 +110,7 @@ class SecurityController extends AppController {
             $_SESSION = [];
             session_unset();
             session_destroy();
+            setcookie("welcome_shown", "", time() - 3600, "/");
 
             header("Location: {$this->url}/login");
         }

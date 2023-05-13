@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../common/utils/AuthUtil.php';
 require_once __DIR__.'/../repository/FavoriteBooksRepository.php';
 
-class UserDashboardController extends AppController {
+class UserFavoritesController extends AppController {
 
     private $url;
 
@@ -15,20 +15,19 @@ class UserDashboardController extends AppController {
         $this->favoriteBookRepository = new FavoriteBooksRepository();
     }
 
-    public function userDashboard()
+    public function myFavorites()
     {
         if(AuthUtil::checkIfAuthorized($_SESSION["roleId"], Role::ROLE_USER)) {
 
-            $userFavoriteBooks = $this->favoriteBookRepository->getUserFavoriteBooks($_SESSION["id"], 5);
+            $userFavoriteBooks = $this->favoriteBookRepository->getUserFavoriteBooks($_SESSION["id"], PHP_INT_MAX);
 
             if (!$this->isPost()) {
 
-                return $this->render('user-dashboard', [
+                return $this->render('user-favorite', [
                     'userFavoriteBooks' => $userFavoriteBooks
                 ]);
             }
         }
         die("Wrong url!");
     }
-
 }

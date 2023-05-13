@@ -63,7 +63,7 @@
                 <h5 class="footer-subtitle">Thank you for being with us!</h5>
                 <p class="footer-media-text">We really appreciate your effort</p>
                 <div class="footer-media-button button">
-                    <a href="/products">Browse our products</a>
+                    <a href="/shopping">Browse our products</a>
                 </div>
             <?php elseif ($_SESSION["authenticated"] &&
                           $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>

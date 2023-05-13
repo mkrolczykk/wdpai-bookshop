@@ -16,6 +16,7 @@ Router::post('register', 'SecurityController');
 Router::post('login', 'SecurityController');
 Router::post('logout', 'SecurityController');
 Router::get('userDashboard', 'UserDashboardController');
+Router::get('myFavorites', 'UserFavoritesController');
 Router::get('employeeDashboard', 'EmployeeDashboardController');
 Router::get('adminDashboard', 'AdminDashboardController');
 

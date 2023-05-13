@@ -155,7 +155,7 @@ class BookRepository extends Repository
         return $result;
     }
 
-    public function getBookByTitle(string $title, string $currency): ?BookDetailResp {
+    public function getBookByTitle(string $title): ?BookDetailResp {
 
         $title = str_replace('-', ' ', $title);
 
@@ -180,8 +180,7 @@ class BookRepository extends Repository
         JOIN book_language ON book.language_id = book_language.language_id
         JOIN currency ON book_price.currency_id = currency.currency_id
         WHERE
-            LOWER(book.title) = LOWER(:title) AND
-            currency.shortcut = :currency
+            LOWER(book.title) = LOWER(:title)
         GROUP BY 
             book.book_id, 
             book.title,
@@ -193,7 +192,6 @@ class BookRepository extends Repository
     ');
 
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-        $stmt->bindParam(':currency', $currency, PDO::PARAM_STR);
 
         $stmt->execute();
         $book = $stmt->fetch(PDO::FETCH_ASSOC);

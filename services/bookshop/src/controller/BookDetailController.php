@@ -19,7 +19,7 @@ class BookDetailController extends AppController {
     public function bookDetail()
     {
         $bookResult =
-            $this->bookRepository->getBookByTitle($_GET['bookTitle'], $_SESSION["authenticated"] ? $_SESSION["currency"] : "USD");
+            $this->bookRepository->getBookByTitle($_GET['bookTitle']);
 
         if (!$this->isPost()) {
             if (!empty($bookResult)) {

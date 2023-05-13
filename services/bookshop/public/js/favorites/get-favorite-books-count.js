@@ -10,7 +10,6 @@ function getFavoriteBooksCount() {
         }})
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             if (data.status === 200) {
                 document.querySelector('.menu-navigation-other-favourite-books-value').textContent = data.countResult;
             }
