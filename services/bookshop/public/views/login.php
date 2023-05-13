@@ -42,7 +42,7 @@
                     <input name="email" placeholder="Email Address" type="email" tabindex="1" required>
                 </fieldset>
                 <fieldset>
-                    <input name="password" placeholder="Password" type="text" tabindex="2" required>
+                    <input name="password" placeholder="Password" type="password" tabindex="2" required>
                 </fieldset>
                 <fieldset>
                     <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Login</button>

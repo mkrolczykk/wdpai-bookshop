@@ -97,7 +97,7 @@ class SecurityController extends AppController {
                     Role::ROLE_USER);
 
             if ($this->userRepository->addSystemUser($user)) {
-                return $this->render('login', ['messages' => ['Registration has been completed successfully! You can log in now :)']]);
+                return $this->render('login', ['messages' => ['Registration success! You can log in now :)']]);
             } else {
                 return $this->render('register', ['messages' => ['Registration fail! Try again in a while']]);
             }
