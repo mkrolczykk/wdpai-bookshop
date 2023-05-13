@@ -37,7 +37,7 @@
                         if (isset($_SESSION["authenticated"])) {
                             switch ($_SESSION["roleId"]) {
                                 case Role::ROLE_USER:
-                                    $href = "/shopping";
+                                    $href = "/explore";
                                     break;
                                 case Role::ROLE_EMPLOYEE:
                                 case Role::ROLE_ADMIN:

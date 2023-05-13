@@ -296,7 +296,7 @@
 }
 
 .menu-mobile-header .menu-mobile-header-menu-btn:checked ~ .menu-mobile-header-menu {
-    max-height: 240px;
+    max-height: 500px;
 }
 
 .menu-mobile-header .menu-mobile-header-menu-btn:checked ~ .menu-mobile-header-menu-icon .navicon {

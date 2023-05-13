@@ -32,7 +32,6 @@
                                   $_SESSION["roleId"] === Role::ROLE_USER): ?>
                             <a href="/userDashboard" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Dashboard</a>
                             <a href="/explore" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Explore books</a>
-                            <a href="/shopping" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Shopping</a>
                             <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
                         <?php elseif ($_SESSION["authenticated"] &&
                                       $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
@@ -63,7 +62,7 @@
                 <h5 class="footer-subtitle">Thank you for being with us!</h5>
                 <p class="footer-media-text">We really appreciate your effort</p>
                 <div class="footer-media-button button">
-                    <a href="/shopping">Browse our products</a>
+                    <a href="/explore">Browse our products</a>
                 </div>
             <?php elseif ($_SESSION["authenticated"] &&
                           $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>

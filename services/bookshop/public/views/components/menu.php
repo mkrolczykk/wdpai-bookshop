@@ -25,30 +25,32 @@
         <?php endif; ?>
         <nav class="menu-navigation">
             <div class="menu-navigation-pages">
-                <?php if (!isset($_SESSION["authenticated"])): ?>
+                <?php if (!isset($_SESSION["authenticated"]) || $_SESSION["roleId"] === Role::ROLE_USER): ?>
                     <a href="/" class="menu-navigation-pages-page">Start page</a>
                     <a href="/newBooks" class="menu-navigation-pages-page">New books</a>
                     <a href="/bestsellers" class="menu-navigation-pages-page">Bestsellers</a>
                     <a href="/contact" class="menu-navigation-pages-page">Contact</a>
-                <?php elseif ($_SESSION["authenticated"] &&
-                              $_SESSION["roleId"] === Role::ROLE_USER): ?>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_USER): ?>
                     <a href="/userDashboard" class="menu-navigation-pages-page">Dashboard</a>
                     <a href="/explore" class="menu-navigation-pages-page">Explore books</a>
-                    <a href="/shopping" class="menu-navigation-pages-page">Shopping</a>
-                    <a href="/contact" class="menu-navigation-pages-page">Contact</a>
-                <?php elseif ($_SESSION["authenticated"] &&
-                              $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
                     <a href="/orders" class="menu-navigation-pages-page">Orders</a>
                     <a href="/addBook" class="menu-navigation-pages-page">Add book</a>
                     <a href="/contact" class="menu-navigation-pages-page">Contact</a>
-                <?php elseif ($_SESSION["authenticated"] &&
-                              $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                     <a href="/orders" class="menu-navigation-pages-page">Orders</a>
                     <a href="/addBook" class="menu-navigation-pages-page">Add book</a>
                     <a href="/employees" class="menu-navigation-pages-page">Employees</a>
                     <a href="/addEmployee" class="menu-navigation-pages-page">Add employee</a>
                 <?php endif; ?>
             </div>
+
             <?php if ($_SESSION["authenticated"] && $_SESSION["roleId"] === Role::ROLE_USER): ?>
                 <div class="menu-navigation-other">
                     <a href="/myFavorites" class="menu-navigation-other-favourite-books">
@@ -68,7 +70,7 @@
                 <input class="menu-mobile-header-menu-btn" type="checkbox" id="menu-btn" />
                 <label class="menu-mobile-header-menu-icon" for="menu-btn"><span class="navicon"></span></label>
                 <ul class="menu-mobile-header-menu">
-                    <?php if (!isset($_SESSION["authenticated"])): ?>
+                    <?php if (!isset($_SESSION["authenticated"]) || $_SESSION["roleId"] === Role::ROLE_USER): ?>
                         <?php
                             $menuResult = array(
                                 array("Start page", "/"),
@@ -80,21 +82,21 @@
                                 echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
                             }
                         ?>
-                    <?php elseif ($_SESSION["authenticated"] &&
-                        $_SESSION["roleId"] === Role::ROLE_USER): ?>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_USER): ?>
                         <?php
                             $menuResult = array(
                                 array("Dashboard", "/userDashboard"),
-                                array("Explore books", "/explore"),
-                                array("Shopping", "/shopping"),
-                                array("Contact", "/contact")
+                                array("Explore books", "/explore")
                             );
                             foreach($menuResult as $menu) {
                                 echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
                             }
                         ?>
-                    <?php elseif ($_SESSION["authenticated"] &&
-                        $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
                         <?php
                             $menuResult = array(
                                 array("Orders", "/orders"),
@@ -105,8 +107,9 @@
                                 echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
                             }
                         ?>
-                    <?php elseif ($_SESSION["authenticated"] &&
-                            $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                         <?php
                             $menuResult = array(
                                 array("Orders", "/orders"),
