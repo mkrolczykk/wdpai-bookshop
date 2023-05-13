@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/components/topbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/navbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/menu.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/categories-container.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/books-container.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/encouragement-bar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/footer.css">
@@ -97,39 +98,8 @@
             ?>
         </section>
         <?php
-            $categoriesHtml = '';
-            foreach ($bookCategories as $category) {
-                $genre = strtolower(str_replace(' ', '-', $category->getGenre()));
-                $thumbnailPath = 'public/img/categories/' . $genre . '.png';
-
-                if (file_exists($thumbnailPath)) {
-                    $thumbnailSrc = $thumbnailPath;
-                } else {
-                    $thumbnailSrc = 'public/img/categories/default-cover.png';
-                }
-
-                $categoryLink = '/category?type=' . $genre;
-                $categoryHtml = sprintf(
-                    '<a href="%s" class="start-page-content-books-categories-container-category">
-                                <img src="%s" alt="%s">
-                                <h2>%s</h2>
-                            </a>',
-                            $categoryLink,
-                            $thumbnailSrc,
-                            $category->getGenre(),
-                            $category->getGenre()
-                );
-                $categoriesHtml .= $categoryHtml;
-            }
+            include "components/categories-container.php";
         ?>
-        <section class="start-page-content-categories">
-            <section class="start-page-content-books-categories">
-                <h1 class="page-section-title start-page-content-books-categories-title">Categories</h1>
-                <div class="start-page-content-books-categories-container">
-                    <?php echo $categoriesHtml; ?>
-                </div>
-            </section>
-        </section>
         <section class="start-page-content-top-books">
             <h1 class="page-section-title start-page-content-top-books-title">Top 10 bestsellers</h1>
             <?php if (!empty($booksResult = $topSoldBooks)): ?>

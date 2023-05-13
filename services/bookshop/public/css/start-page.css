@@ -125,65 +125,6 @@
     margin-left: 5px;
 }
 
-.start-page-content-books-categories h1 {
-
-    color: #693FDF;
-}
-
-.start-page-content-books-categories-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-    justify-content: center;
-    align-items: center;
-}
-
-.start-page-content-books-categories-container-category {
-    flex-basis: 20%;
-    margin-bottom: 30px;
-    padding: 20px;
-    position: relative;
-    display: flex;
-    min-width: 200px;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20%;
-    background-color: #F8F8F8;
-    color: #3D464D;
-    font-weight: 600;
-}
-
-.start-page-content-books-categories-container-category:hover {
-    background-color: #F5F5F5;
-    cursor: pointer;
-    color: #693FDF;
-}
-
-
-.start-page-content-books-categories-container-category.empty {
-    visibility: hidden;
-}
-
-.start-page-content-books-categories-container-category h2 {
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 10px;
-    text-align: center;
-    max-width: 25%;
-    color: #3D464D;
-}
-
-.start-page-content-books-categories-container-category img {
-    display: block;
-    width: 25%;
-}
-
-.start-page-content-books-categories-container-category:hover img {
-    transform: scale(1.25);
-    opacity: 0.8;
-    transition: all 0.2s ease;
-}
-
 .start-page-content-top-books {
     min-height: 350px;
     display: flex;
@@ -247,11 +188,6 @@
     .start-page-content-features-feature-title {
         font-size: 1rem;
     }
-
-    .start-page-content-books-categories-container-category {
-        flex-basis: 40%;
-        margin-right: 5%;
-    }
 }
 
 /* smartphones, Android phones, landscape iPhone */
@@ -310,10 +246,6 @@
     .start-page-content-features-feature-title {
         font-size: 14px;
     }
-
-    .start-page-content-books-categories-container-category {
-        flex-basis: 18%;
-    }
 }
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */
@@ -324,10 +256,6 @@
     }
     .start-page-content-features-feature-title {
         font-size: 1rem;
-    }
-
-    .start-page-content-books-categories-container-category {
-        flex-basis: 16%;
     }
 }
 
@@ -358,11 +286,6 @@
         flex-direction: row;
         justify-content: space-evenly;
     }
-
-    .start-page-content-books-categories-container-category {
-        flex-basis: 14%;
-    }
-
 }
 
 /* hi-res laptops and desktops */
@@ -379,9 +302,5 @@
     .start-page-content-left-descr p {
         font-size: 1.5rem;
         text-align: start;
-    }
-
-    .start-page-content-books-categories-container-category {
-        flex-basis: 12%;
     }
 }

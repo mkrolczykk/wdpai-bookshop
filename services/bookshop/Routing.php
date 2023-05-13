@@ -12,6 +12,7 @@ require_once 'src/controller/AdminDashboardController.php';
 require_once 'src/controller/EmployeeDashboardController.php';
 require_once 'src/controller/UserDashboardController.php';
 require_once 'src/controller/UserFavoritesController.php';
+require_once 'src/controller/ExploreBooksController.php';
 
 class Router {
 

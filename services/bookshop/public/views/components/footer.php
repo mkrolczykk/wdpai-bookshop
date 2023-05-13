@@ -21,33 +21,39 @@
                             array("/register", "Register")
                         );
 
-                    if (!isset($_SESSION["authenticated"])):
-                        foreach($menuResult as $menu) {
-                            echo '<a href="' . $menu[0] . '" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>' . $menu[1] . '</a>';
+                        if (!isset($_SESSION["authenticated"]) || $_SESSION["roleId"] === Role::ROLE_USER) {
+                            foreach ($menuResult as $menu) {
+                                if ($_SESSION["roleId"] === Role::ROLE_USER && ($menu[0] === "/contact" || $menu[0] === "/login" || $menu[0] === "/register")) {
+                                    continue;
+                                }
+                                echo '<a href="' . $menu[0] . '" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>' . $menu[1] . '</a>';
+                            }
                         }
-                    endif;
-                    ?>
-                    <?php if (isset($_SESSION["authenticated"])): ?>
-                        <?php if ($_SESSION["authenticated"] &&
-                                  $_SESSION["roleId"] === Role::ROLE_USER): ?>
-                            <a href="/userDashboard" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Dashboard</a>
-                            <a href="/explore" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Explore books</a>
-                            <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
-                        <?php elseif ($_SESSION["authenticated"] &&
-                                      $_SESSION["roleId"] === Role::ROLE_EMPLOYEE): ?>
-                            <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
-                            <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
-                            <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
-                        <?php elseif ($_SESSION["authenticated"] &&
-                                      $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
-                            <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
-                            <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
-                            <a href="/employees" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Employees</a>
-                            <a href="/addEmployee" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add employee</a>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </div>
 
+                        if (isset($_SESSION["authenticated"])) {
+                            if ($_SESSION["roleId"] === Role::ROLE_USER) {
+                                echo '
+                                    <a href="/userDashboard" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Dashboard</a>
+                                    <a href="/explore" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Explore books</a>
+                                    <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
+                                ';
+                            } elseif ($_SESSION["roleId"] === Role::ROLE_EMPLOYEE) {
+                                echo '
+                                    <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
+                                    <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
+                                    <a href="/contact" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Contact</a>
+                                ';
+                            } elseif ($_SESSION["roleId"] === Role::ROLE_ADMIN) {
+                                echo '
+                                    <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
+                                    <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
+                                    <a href="/employees" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Employees</a>
+                                    <a href="/addEmployee" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add employee</a>
+                                ';
+                            }
+                        }
+                    ?>
+                </div>
             </div>
         </div>
         <div class="footer-media">
