@@ -7,35 +7,6 @@
     padding: 2.5% 5%;
 }
 
-.user-dashboard-content-start {
-    display: none;
-    background-color: #693FDF;
-    color: #F5F5F5;
-    width: 60%;
-    text-align: center;
-    padding: 10px;
-}
-
-.welcome-message {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.welcome-message-text {
-    color: #F5F5F5;
-    flex-grow: 1;
-}
-
-.welcome-message-button {
-    background: none;
-    border: none;
-    font-size: 1.3rem;
-    cursor: pointer;
-    color: #F5F5F5;
-}
-
 .user-dashboard-content-message {
     display: flex;
     justify-content: flex-start;
@@ -70,31 +41,6 @@
         justify-content: center;
         font-size: 1.2rem;
     }
-
-    .welcome-message {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-    }
-
-    .welcome-message-text {
-        color: #F5F5F5;
-        flex-grow: 1;
-    }
-
-    .welcome-message-button {
-        background: none;
-        border: none;
-        font-size: 1.3rem;
-        cursor: pointer;
-        color: #F5F5F5;
-    }
-
-    .user-dashboard-content-start {
-        font-size: 14px;
-    }
 }
 
 /* smartphones, Android phones, landscape iPhone */
@@ -106,21 +52,10 @@
         justify-content: center;
     }
 
-    .user-dashboard-content-start {
-        font-size: 16px;
-    }
-
-    .user-dashboard-content-start {
-        font-size: 16px;
-    }
-
 }
 
 /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 @media (min-width: 768px) {
-    .user-dashboard-content-start {
-        font-size: 1.3rem;
-    }
 }
 
 /* tablet, landscape iPad, lo-res laptops ands desktops */

@@ -46,7 +46,6 @@
                 <?php if (isset($_SESSION["authenticated"]) && $_SESSION["roleId"] === Role::ROLE_ADMIN): ?>
                     <a href="/orders" class="menu-navigation-pages-page">Orders</a>
                     <a href="/addBook" class="menu-navigation-pages-page">Add book</a>
-                    <a href="/employees" class="menu-navigation-pages-page">Employees</a>
                     <a href="/addEmployee" class="menu-navigation-pages-page">Add employee</a>
                 <?php endif; ?>
             </div>
@@ -114,7 +113,6 @@
                             $menuResult = array(
                                 array("Orders", "/orders"),
                                 array("Add book", "/addBook"),
-                                array("Employees", "/employees"),
                                 array("Add employee", "/addEmployee")
                             );
                             foreach($menuResult as $menu) {

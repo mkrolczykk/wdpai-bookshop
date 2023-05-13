@@ -47,7 +47,6 @@
                                 echo '
                                     <a href="/orders" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Orders</a>
                                     <a href="/addBook" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add book</a>
-                                    <a href="/employees" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Employees</a>
                                     <a href="/addEmployee" class="footer-menu-nav-option"><i class="fa fa-caret-right fa-lg footer-menu-icon"></i>Add employee</a>
                                 ';
                             }
@@ -82,7 +81,7 @@
                 <h5 class="footer-subtitle">Administrator panel</h5>
                 <p class="footer-media-text">Book shop admin panel</p>
                 <div class="footer-media-button button">
-                    <a href="/employees">Employees</a>
+                    <a href="/addBook">Add book</a>
                 </div>
             <?php endif; ?>
             <h6 class="footer-subtitle">Find us on social media</h6>
