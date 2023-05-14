@@ -1,0 +1,145 @@
+.shopping-cart-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #F2F2F2;
+    padding: 2.5% 5%;
+}
+
+.shopping-cart-content-message {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    color: #3D464D;
+}
+
+.shopping-cart-content-title {
+    align-self: start;
+    color: #3D464D;
+}
+
+.shopping-cart-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.shopping-cart-table tr th {
+    font-weight: 600;
+}
+
+#cartTotalAmount {
+    font-weight: 600;
+    color: #693FDF;
+}
+
+#cartTotalCurrency {
+    font-weight: 600;
+    color: #693FDF;
+}
+
+#shippingCost {
+    font-weight: 600;
+    color: #693FDF;
+}
+
+.shopping-cart-button {
+    text-transform: none;
+    box-shadow: inset 0 0 0 2px #C72E56;
+    background-color: #C72E56;
+    color: #ffffff;
+    margin: 30px 0px;
+}
+
+.shopping-cart-button:hover {
+    background-color: red;
+}
+
+.shopping-cart-table th,
+.shopping-cart-table td {
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.shopping-cart-table th {
+    background-color: #f2f2f2;
+}
+
+.cart-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.amount-button {
+    width: 25px;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+}
+
+.remove-button {
+    padding: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: red;
+}
+
+.remove-button:hover {
+    color: darkred;
+}
+
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (max-width : 576px) {
+    .shopping-cart-content {
+        padding: unset;
+    }
+
+    .shopping-cart-content-message {
+        min-height: 75px;
+        justify-content: center;
+        font-size: 1.2rem;
+    }
+
+    #currency {
+        display: none;
+    }
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (min-width: 577px) {
+
+    .shopping-cart-content-message {
+        min-height: 100px;
+        max-width: 1200px;
+        justify-content: center;
+    }
+
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (min-width: 768px) {
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width: 992px) {
+
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (min-width: 1200px) {
+    .shopping-cart-content-message {
+        padding-left: 60px;
+        justify-content: start;
+    }
+}
+
+/* hi-res laptops and desktops */
+@media (min-width: 1400px) {
+
+}

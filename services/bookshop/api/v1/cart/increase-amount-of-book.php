@@ -14,7 +14,9 @@ if(
     $_SESSION["authenticated"] &&
     $_SESSION["roleId"] == Role::ROLE_USER) {
 
-    echo $shoppingCartController->increaseAmountOfGivenBook($_POST['bookId']);
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    echo $shoppingCartController->increaseAmountOfGivenBook($data['bookId']);
 } else {
     echo json_encode(array("status" => 405 , "message" => 'Method not allowed'));
 }

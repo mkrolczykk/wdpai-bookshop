@@ -62,9 +62,9 @@
                             <div class="book-detail-section-buttons">
                                 <span>Amount</span>
                                 <div class="amount-button">
-                                    <i class="minus fa fa-minus"></i>
-                                    <span class="amount">01</span>
-                                    <i class="plus fa fa-plus fa-lg"></i>
+                                    <i class="minus fa fa-minus fa-sm"></i>
+                                    <span class="amount">1</span>
+                                    <i class="plus fa fa-plus fa-sm"></i>
                                 </div>
                                 <?php if (!isset($_SESSION["authenticated"])): ?>
                                     <div class="shopping-cart-button button" onclick="redirectToLogin()">

@@ -8,11 +8,12 @@ require_once 'src/controller/ContactController.php';
 require_once 'src/controller/BookCategoryController.php';
 require_once 'src/controller/BookDetailController.php';
 require_once 'src/controller/FindResultsController.php';
+require_once 'src/controller/UserDashboardController.php';
+require_once 'src/controller/ExploreBooksController.php';
+require_once 'src/controller/UserShoppingCartController.php';
+require_once 'src/controller/UserFavoritesController.php';
 require_once 'src/controller/AdminDashboardController.php';
 require_once 'src/controller/EmployeeDashboardController.php';
-require_once 'src/controller/UserDashboardController.php';
-require_once 'src/controller/UserFavoritesController.php';
-require_once 'src/controller/ExploreBooksController.php';
 
 class Router {
 

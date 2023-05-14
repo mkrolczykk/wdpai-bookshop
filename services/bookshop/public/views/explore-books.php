@@ -22,7 +22,6 @@
         include "components/menu.php";
     ?>
     <div class="explore-books-content">
-        <section class="user-favorite-content-favorite-books">
             <?php if (!empty($booksResult = $bookCategories)): ?>
                 <?php include "components/categories-container.php"; ?>
             <?php else: ?>
@@ -34,7 +33,6 @@
                 <?php endif; ?>
             </div>
             <?php endif; ?>
-        </section>
     </div>
     <?php
         include "components/footer.php";
