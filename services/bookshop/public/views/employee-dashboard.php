@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/components/navbar.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/menu.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/welcome-message.css">
+    <link rel="stylesheet" type="text/css" href="public/css/components/orders-container.css">
     <link rel="stylesheet" type="text/css" href="public/css/components/footer.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

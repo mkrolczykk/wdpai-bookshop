@@ -6,7 +6,7 @@ function assignEmployeeToOrder(orderId, employeeId) {
         employeeId: employeeId
     };
 
-    fetch(assignEmployeeToOrderEndpoint, {
+    return fetch(assignEmployeeToOrderEndpoint, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -20,10 +20,23 @@ function assignEmployeeToOrder(orderId, employeeId) {
                 throw new Error('Request failed with status ' + response.status);
             }
         })
+        .catch(error => {
+            throw new Error('Request failed: ' + error.message);
+        });
+}
+
+function updateAssignedToField(orderId, employee) {
+    const assignedToElements = document.querySelectorAll("#order-row-" + orderId + " .order-executor");
+    assignedToElements.forEach(element => {
+        element.textContent = employee;
+    });
+}
+
+function assignToEmployee(orderId, employeeId, employee) {
+    assignEmployeeToOrder(orderId, employeeId)
         .then(data => {
             if (data && data.status === 200) {
-                // Success - employee has been assigned to the order
-                alert(data.message);
+                updateAssignedToField(orderId, employee);
             } else if (data && data.status === 400) {
                 // Fail - employee cannot be applied to the order
                 alert(data.message);
@@ -38,16 +51,3 @@ function assignEmployeeToOrder(orderId, employeeId) {
             console.log(error);
         });
 }
-
-function assignToEmployee(orderId, employeeId, employee) {
-    assignEmployeeToOrder(orderId, employeeId);
-    updateAssignedToField(orderId, employee);
-}
-
-function updateAssignedToField(orderId, employee) {
-    const assignedToElements = document.querySelectorAll("#order-row-" + orderId + " .order-executor");
-    assignedToElements.forEach(element => {
-        element.textContent = employee;
-    });
-}
-

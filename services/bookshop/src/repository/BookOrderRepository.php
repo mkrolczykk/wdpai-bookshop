@@ -15,6 +15,7 @@ class BookOrderRepository extends Repository {
                 TO_CHAR(o.created_at, \'YYYY-MM-DD HH24:MI:SS\') AS ordertime,
                 SUM(ol.total_price) AS total,
                 c.shortcut AS currency,
+                u.user_id AS orderexecid,
                 CONCAT(u.name, \' \', u.surname) AS orderexec,
                 os.status AS orderstatus
             FROM
@@ -36,6 +37,7 @@ class BookOrderRepository extends Repository {
                 o.created_at,
                 c.shortcut,
                 os.status,
+                u.user_id,
                 u.name,
                 u.surname
             ORDER BY
@@ -52,6 +54,7 @@ class BookOrderRepository extends Repository {
                 $order['total'],
                 $order['currency'],
                 $order['orderstatus'],
+                $order['orderexecid'],
                 $order['orderexec']
             );
         }

@@ -20,18 +20,18 @@
                     <td><?php echo $order->getTotal(); ?></td>
                     <td><?php echo $order->getCurrency(); ?></td>
                     <td><?php echo $order->getOrderStatus(); ?></td>
-                    <td class="order-executor"><?php echo $order->getOrderExec() !== null ? ($order->getOrderExec() == $_SESSION["id"] ? "Me" : $order->getOrderExec()) : "-"; ?></td>
+                    <td class="order-executor"><?php echo $order->getOrderExec() !== null ? ($order->getOrderExecId() == $_SESSION["id"] ? "Me" : $order->getOrderExec()) : "-"; ?></td>
                     <td>
                         <div class="order-dropdown">
                             <button class="fa fa-caret-down fa-xl order-dropdown-btn"></button>
                             <div class="order-dropdown-content">
                                 <a href="#" class="finish-action" onclick="markAsFinished(<?php echo $order->getOrderId(); ?>)">Set as finished</a>
-                                <?php if (null === $order->getOrderExec()): ?>
+                                <?php if ((null === $order->getOrderExec()) || ($_SESSION["roleId"] == Role::ROLE_ADMIN)): ?>
                                     <div class="assign-dropdown">
                                         <a class="assign-to"><span class="fa fa-caret-left fa-lg"></span>Assign to</a>
                                         <div class="assign-dropdown-content">
                                             <?php foreach ($employees as $employee): ?>
-                                                <?php if ($_SESSION["id"] === $employee->getEmployeeId()): ?>
+                                                <?php if ($_SESSION["id"] == $employee->getEmployeeId()): ?>
                                                     <a class="assign-option" onclick="assignToEmployee(<?php echo $order->getOrderId(); ?>, <?php echo $employee->getEmployeeId(); ?>, 'Me');">Me</a>
                                                 <?php else: ?>
                                                     <a class="assign-option" onclick="assignToEmployee(<?php echo $order->getOrderId(); ?>, <?php echo $employee->getEmployeeId(); ?>, '<?php echo $employee->getEmployeeName() . ' ' . $employee->getEmployeeSurname(); ?>');"><?php echo $employee->getEmployeeName() . ' ' . $employee->getEmployeeSurname(); ?></a>
