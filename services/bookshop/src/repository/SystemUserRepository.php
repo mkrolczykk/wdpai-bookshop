@@ -3,6 +3,7 @@
 require_once 'Repository.php';
 require_once __DIR__ . '/../model/request/SystemUserRegisterReq.php';
 require_once __DIR__ . '/../model/response/SystemUserLoginResp.php';
+require_once __DIR__ . '/../model/response/EmployeeListResp.php';
 
 class SystemUserRepository extends Repository {
 
@@ -136,4 +137,39 @@ class SystemUserRepository extends Repository {
         return ($data !== false);
     }
 
+    public function getEmployees(): array {
+
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT 
+                su.user_id AS user_id, 
+                su.name AS name, 
+                su.surname AS surname, 
+                su.username AS username, 
+                su.email AS email, 
+                su.password AS password,
+                r.role_id AS role_id
+            FROM 
+                system_user su
+            JOIN user_role ur ON su.user_id = ur.user_id
+            JOIN role r ON ur.role_id = r.role_id
+            WHERE 
+                r.name = \'ROLE_EMPLOYEE\'
+        ');
+
+        $stmt->execute();
+
+        $employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($employees as $employee) {
+            $result[] = new EmployeeListResp(
+                $employee['user_id'],
+                $employee['name'],
+                $employee['surname']
+            );
+        }
+
+        return $result;
+    }
 }
