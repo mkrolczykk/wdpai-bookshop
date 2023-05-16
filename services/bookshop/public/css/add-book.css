@@ -1,0 +1,237 @@
+.employee-add-book * {
+    -moz-box-sizing: border-box;
+    color: #3D464D;
+}
+
+.employee-add-book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #F2F2F2;
+    padding: 2.5% 5%;
+}
+
+.employee-add-book-title {
+    color: #3D464D;
+    align-self: center;
+}
+
+.employee-add-book-container {
+    max-width: 500px;
+    width: 50%;
+    margin-bottom: 25px;
+    position: relative;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    font-weight: 100;
+    color: #3D464D;
+}
+
+#register {}
+
+.register {
+    background: #F9F9F9;
+    padding: 25px;
+    flex-grow: 1;
+    max-width: 500px;
+    width: 100%;
+}
+
+#register .messages {
+    padding-bottom: 15px;
+    color: #3D464D;
+    font-weight: 600;
+}
+
+fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+}
+
+#register input[type="text"],
+#register textarea,
+#register input[type="email"],
+#register input[type="password"] {
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #F9F9F9;
+    margin: 0 0 5px;
+    padding: 10px;
+}
+
+#register input[type="text"]:hover,
+#register input[type="email"]:hover,
+#register textarea:hover,
+#register input[type="password"]:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #5328c9;
+}
+
+#register textarea {
+    max-width: 100%;
+    resize: none;
+    color: #3D464D;
+}
+
+#summary {
+    min-height: 120px;
+    font: inherit;
+}
+
+#description {
+    min-height: 350px;
+    text-align: start;
+    font: inherit;
+}
+
+#book-cover {
+    margin: 15px 0;
+}
+
+#book-cover p {
+    margin-bottom: 10px;
+    color: #3D464D;
+}
+
+#add-book-button {
+    margin-top: 25px;
+}
+
+#register button[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #693FDF;
+    color: #F5F5F5;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+#register button[type="submit"]:hover {
+    background: #5328c9;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#register button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#register input:focus,
+#register textarea:focus,
+#register textarea:focus {
+    outline: 0;
+    border: 1px solid #3D464D;
+}
+
+::-webkit-input-placeholder {
+    color: #888;
+}
+
+:-moz-placeholder {
+    color: #888;
+}
+
+::-moz-placeholder {
+    color: #888;
+}
+
+:-ms-input-placeholder {
+    color: #888;
+}
+
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+@media (max-width : 576px) {
+
+    .page-section-title {
+        margin: 25px 0 50px 0;
+    }
+
+    .register {
+        min-width: 250px;
+        margin-bottom: 50px;
+    }
+
+    .employee-add-book-container {
+        max-width: 500px;
+        width: 100%;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+
+}
+
+/* smartphones, Android phones, landscape iPhone */
+@media (min-width: 577px) {
+
+    .page-section-title {
+        margin: 25px 0 50px 0;
+    }
+
+    .register {
+        width: 500px;
+    }
+
+    .employee-add-book-container {
+        max-width: 500px;
+        width: 100%;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+}
+
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (min-width: 768px) {
+
+    .page-section-title {
+        margin: 25px 0 50px 0;
+    }
+
+    .employee-add-book-section {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 500px;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 25px;
+    }
+
+    .employee-add-book-container {
+        max-width: 500px;
+        width: 50%;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+}
+
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+@media (min-width: 992px) {
+    .page-section-title {
+        margin: 0 0 50px 0;
+    }
+}
+
+/* big landscape tablets, laptops, and desktops */
+@media (min-width: 1200px) {
+
+}
+
+/* hi-res laptops and desktops */
+@media (min-width: 1400px) {
+
+}

@@ -23,7 +23,7 @@
         include "components/menu.php";
     ?>
     <section class="employee-add-book">
-        <h1 class="page-section-title employee-add-book-title">Add book</h1>
+        <h1 class="page-section-title employee-add-book-title">Add book to system</h1>
         <div class=employee-add-book-container">
             <form id="register" class="register" action="addBook" method="POST" ENCTYPE="multipart/form-data">
                 <div class="messages">
@@ -36,41 +36,41 @@
                     ?>
                 </div>
                 <fieldset>
-                    <input name="title" placeholder="Book Title" type="text" tabindex="1" required>
+                    <input name="title" placeholder="Title" type="text" tabindex="1" required>
                 </fieldset>
                 <fieldset>
-                    <input name="author" placeholder="Book Author" type="text" tabindex="2" required>
+                    <input name="author" placeholder="Author" type="text" tabindex="2" required>
                 </fieldset>
                 <fieldset>
-                    <input name="summary" placeholder="Summary" type="text" tabindex="3" required>
+                    <input name="publisher" placeholder="Publisher name" type="text" tabindex="3" required>
                 </fieldset>
                 <fieldset>
-                    <input name="description" placeholder="Book Description" type="text" tabindex="4" required>
+                    <input name="genre" placeholder="Category" type="text" tabindex="4" required>
                 </fieldset>
                 <fieldset>
-                    <input name="genre" placeholder="Category" type="text" tabindex="5" required>
+                    <textarea id="summary" name="summary" placeholder="Summary" rows="4" tabindex="5" required></textarea>
                 </fieldset>
                 <fieldset>
-                    <input name="numPages" placeholder="Number of pages" type="text" tabindex="6" required>
+                    <textarea id="description" name="description" placeholder="Book description" rows="6" tabindex="6" required></textarea>
                 </fieldset>
                 <fieldset>
-                    <input name="language" placeholder="Language (ex. pl, eng, en-US, fre)" type="text" tabindex="7" required>
+                    <input name="numPages" placeholder="Number of pages" type="text" tabindex="7" required>
                 </fieldset>
                 <fieldset>
-                    <input name="price" placeholder="Price" type="text" tabindex="8" required>
+                    <input name="language" placeholder="Language (ex. pl, eng, en-US, fre)" type="text" tabindex="8" required>
                 </fieldset>
                 <fieldset>
-                    <input name="currency" placeholder="Currency (ex. USD, PLN, EUR)" type="text" tabindex="9" required>
+                    <input name="price" placeholder="Book price" type="text" tabindex="9" required>
                 </fieldset>
                 <fieldset>
-                    <input name="publisher" placeholder="Book publisher" type="text" tabindex="10" required>
+                    <input name="currency" placeholder="Currency (ex. USD, PLN, EUR)" type="text" tabindex="10" required>
                 </fieldset>
-                <fieldset>
-                    <p>Upload Book cover</p>
-                    <input type="file" name="file"/>
+                <fieldset id="book-cover">
+                    <p>Upload book cover</p>
+                    <input type="file" name="file" tabindex="11"/>
                 </fieldset>
-                <fieldset>
-                    <button name="submit" type="submit" id="contact-submit" tabindex="11" data-submit="...Sending">Add Book</button>
+                <fieldset id="add-book-button">
+                    <button name="submit" type="submit" id="contact-submit" tabindex="12" data-submit="...Sending">Add Book</button>
                 </fieldset>
             </form>
         </div>

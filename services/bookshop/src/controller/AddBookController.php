@@ -16,7 +16,7 @@ class AddBookController extends AppController {
 
     const UPLOAD_DIRECTORY = '/../public/img/books/';
 
-    private $message = [];
+    private array $message = [];
 
     private BookRepository $bookRepository;
 
@@ -34,13 +34,6 @@ class AddBookController extends AppController {
             AuthUtil::checkIfAuthorized($USER_ROLE, Role::ROLE_ADMIN)
         ) {
             if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
-
-                $fileName = strtolower(str_replace(' ', '-', trim($_POST['title'])));
-
-                move_uploaded_file(
-                    $_FILES['file']['tmp_name'],
-                    dirname(__DIR__) . self::UPLOAD_DIRECTORY . $fileName . '.png'
-                );
 
                 $title = $_POST['title'];
                 $author = $_POST['author'];
@@ -92,9 +85,15 @@ class AddBookController extends AppController {
                 );
 
                 if ($this->bookRepository->addBook($book)) {
+
+                    move_uploaded_file(
+                        $_FILES['file']['tmp_name'],
+                        dirname(__DIR__) . self::UPLOAD_DIRECTORY . $slug . '.png'
+                    );
+
                     return $this->render('add-book', ['messages' => ['Book added!']]);
                 } else {
-                    return $this->render('add-book', ['messages' => ['Operation failed! Check input data and try again']]);
+                    return $this->render('add-book', ['messages' => ['Operation failed! Check input data and try again.']]);
                 }
 
                 return $this->render('add-book', [
