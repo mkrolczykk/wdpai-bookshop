@@ -25,6 +25,7 @@ function removeFromFavorites(bookId) {
             if (data && data.status === 200) {
                 // Success - book has been removed favorites
                 alert(data.message);
+                location.reload();
             } else if (data && data.status === 400) {
                 // Fail - book not present in favorites
                 alert(data.message);
@@ -38,4 +39,5 @@ function removeFromFavorites(bookId) {
             alert('Request failed: ' + error.message);
             console.log(error);
         });
+
 }

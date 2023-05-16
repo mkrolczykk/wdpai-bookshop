@@ -10,13 +10,17 @@ class FavoriteBooksRepository extends Repository {
             INSERT INTO system_user_favorite_book (user_id, book_id)
             VALUES (:userId, :bookId)
             ON CONFLICT (user_id, book_id) DO NOTHING
+            RETURNING *
         ');
 
         $stmt->bindParam(':userId', $userId);
         $stmt->bindParam(':bookId', $bookId, PDO::PARAM_INT);
 
-        return $stmt->execute();
+        $result = $stmt->execute();
+
+        return $result && $stmt->rowCount() > 0;
     }
+
 
     public function removeFromFavorites(string $userId, int $bookId): bool {
 
@@ -53,6 +57,7 @@ class FavoriteBooksRepository extends Repository {
 
         $stmt = $this->database->connect()->prepare('
         SELECT
+            book.book_id AS bookid,
             book.title AS title,
             STRING_AGG(author.author_name, \', \') AS authors,
             book_price.price AS price,
@@ -85,6 +90,7 @@ class FavoriteBooksRepository extends Repository {
 
         foreach ($books as $book) {
             $result[] = new BookResp(
+                $book['bookid'],
                 $book['title'],
                 $book['authors'],
                 $book['price'],

@@ -81,9 +81,25 @@
                                         <i class="fa fa-shopping-cart"></i>
                                         <a>Add to cart</a>
                                     </div>
-                                    <div class="favorite-button button" onclick="addToFavorites('<?php echo $bookResult->getBookId(); ?>')">
-                                        <i class="fa fa-heart fa-lg"></i>
-                                        <a>Add to favorites</a>
+                                    <?php
+                                        $bookId = $bookResult->getBookId();
+                                        $isFavorite = false;
+
+                                        foreach ($favoriteBooksResult as $favoriteBook) {
+                                            if ($favoriteBook->getBookId() === $bookId) {
+                                                $isFavorite = true;
+                                                break;
+                                            }
+                                        }
+                                    ?>
+                                    <div class="favorite-button button" onclick="<?php echo $isFavorite ? "removeFromFavorites('$bookId')" : "addToFavorites('$bookId')" ?>">
+                                        <?php if ($isFavorite): ?>
+                                            <i class="fa fa-thumbs-down fa-lg"></i>
+                                            <a>Remove from favorites</a>
+                                        <?php else: ?>
+                                            <i class="fa fa-heart fa-lg"></i>
+                                            <a>Add to favorites</a>
+                                        <?php endif; ?>
                                     </div>
                                 <?php endif; ?>
                             </div>
@@ -115,5 +131,6 @@
     <script type="text/javascript" src="public/js/cart/amount-button.js"></script>
     <script type="text/javascript" src="public/js/cart/add-to-shopping-cart.js"></script>
     <script type="text/javascript" src="public/js/favorites/add-to-favorites.js"></script>
+    <script type="text/javascript" src="public/js/favorites/remove-from-favorites.js"></script>
     <script type="text/javascript" src="public/js/redirect-to-login.js"></script>
 </body>

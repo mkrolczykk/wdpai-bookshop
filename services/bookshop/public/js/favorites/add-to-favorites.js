@@ -25,6 +25,7 @@ function addToFavorites(bookId) {
             if (data && data.status === 200) {
                 // Success - book has been added to favorites
                 alert(data.message);
+                location.reload();
             } else if (data && data.status === 400) {
                 // Fail - book already present in favorites
                 alert(data.message);
