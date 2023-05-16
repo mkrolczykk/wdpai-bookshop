@@ -39,7 +39,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
     min-width: 200px;
 }
 
@@ -179,6 +178,10 @@
         min-height: 100px;
         max-width: 1200px;
         justify-content: center;
+    }
+
+    .cart-row-book {
+        padding-left: 15px;
     }
 
 }

@@ -79,8 +79,10 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="shopping-cart-button button">
-                <a href="">Submit order</a>
+            <div class="shopping-cart-button button"
+                 onclick="alert('Action temporarily unavailable! We are working on this feature :)')"
+            >
+                <a>Submit order</a>
             </div>
 
         <?php else: ?>
