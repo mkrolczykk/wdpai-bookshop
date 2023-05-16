@@ -38,7 +38,7 @@
                                 if (file_exists($coverImagePath)) {
                                     echo '<img src="' . $coverImagePath . '" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
                                 } else {
-                                    echo '<img src="./public/img/books/mock-book-detail-cover.png" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
+                                    echo '<img src="./public/img/books/mock-book-cover.png" class="book-detail-content-upper-section-cover-image" alt="Book cover">';
                                 }
                             ?>
                         </div>

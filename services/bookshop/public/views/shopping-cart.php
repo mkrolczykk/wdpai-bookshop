@@ -41,7 +41,7 @@
                         <td>
                             <div class="cart-row-book">
                                 <div class="cart-row-book-content">
-                                    <img src="public/img/books/<?php echo str_replace(' ', '-', strtolower($item->getBookName())); ?>.png" alt="Book Cover" onerror="this.src='public/img/books/mock-book-detail-cover.png'" class="book-cover">
+                                    <img src="public/img/books/<?php echo str_replace(' ', '-', strtolower($item->getBookName())); ?>.png" alt="Book Cover" onerror="this.src='public/img/books/mock-book-cover.png'" class="book-cover">
                                     <a href="bookDetail?bookTitle=<?php echo str_replace(' ', '-', $item->getBookName()); ?>">
                                         <?php echo $item->getBookName(); ?>
                                     </a>
