@@ -87,7 +87,9 @@
                         <?php
                             $menuResult = array(
                                 array("Dashboard", "/userDashboard"),
-                                array("Explore books", "/explore")
+                                array("Explore books", "/explore"),
+                                array("Favorites", "/myFavorites"),
+                                array("Shopping cart", "/shoppingCart"),
                             );
                             foreach($menuResult as $menu) {
                                 echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
