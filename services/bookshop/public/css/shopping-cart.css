@@ -32,6 +32,7 @@
 .cart-row {
     border-bottom: 1px solid #ddd;
     max-width: 200px;
+    background-color: #F8F8F8;
 }
 
 .cart-row-book {
@@ -62,6 +63,9 @@
 
 .shopping-cart-table tr th {
     font-weight: 600;
+    background-color: #3D464D;
+    color: #F5F5F5;
+    height: 30px;
 }
 
 #cartTotalAmount {
