@@ -72,6 +72,10 @@
     text-align: left;
 }
 
+.assign-to:hover, .finish-action:hover {
+    cursor: pointer;
+}
+
 .order-dropdown-content a:hover {
     background-color: #f1f1f1;
 }
@@ -119,6 +123,10 @@
 }
 
 @media (max-width : 576px) {
+    .orders-container {
+        padding: unset;
+    }
+
     .orders-table {
         width: 95%;
     }
@@ -129,5 +137,20 @@
 
     .assign-dropdown-content {
         min-width: 140px;
+    }
+
+    .order-dropdown-content,
+    .assign-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .order-dropdown:hover .order-dropdown-content,
+    .assign-dropdown:hover .assign-dropdown-content {
+        display: block;
     }
 }

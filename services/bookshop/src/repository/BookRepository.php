@@ -255,55 +255,55 @@ class BookRepository extends Repository
         $pdo->beginTransaction();
 
         try {
-            // Sprawdzenie istnienia publishera
+            // Check if publisher exists
             $stmt = $pdo->prepare('SELECT publisher_id FROM publisher WHERE publisher_name = ?');
             $stmt->execute([$publisher]);
             $publisherId = $stmt->fetchColumn();
 
             if (!$publisherId) {
-                // Jeśli publisher nie istnieje, dodaj nowy rekord
+                // If not, create a new one
                 $stmt = $pdo->prepare('INSERT INTO publisher (publisher_name) VALUES (?)');
                 $stmt->execute([$publisher]);
                 $publisherId = $pdo->lastInsertId();
             }
 
-            // Sprawdzenie istnienia języka
+            // Check if language exists
             $stmt = $pdo->prepare('SELECT language_id FROM book_language WHERE language_name = ?');
             $stmt->execute([$language]);
             $languageId = $stmt->fetchColumn();
 
             if (!$languageId) {
-                // Jeśli język nie istnieje, dodaj nowy rekord
+                // if not, add new one
                 $stmt = $pdo->prepare('INSERT INTO book_language (language_name) VALUES (?)');
                 $stmt->execute([$language]);
                 $languageId = $pdo->lastInsertId();
             }
 
-            // Sprawdzenie istnienia gatunku
+            // Check if category exists
             $stmt = $pdo->prepare('SELECT genre_id FROM book_genre WHERE genre = ?');
             $stmt->execute([$genre]);
             $genreId = $stmt->fetchColumn();
 
             if (!$genreId) {
-                // Jeśli gatunek nie istnieje, dodaj nowy rekord
+                // if not, add new one
                 $stmt = $pdo->prepare('INSERT INTO book_genre (genre) VALUES (?)');
                 $stmt->execute([$genre]);
                 $genreId = $pdo->lastInsertId();
             }
 
-            // Sprawdzenie istnienia autora
+            // Check if author exists
             $stmt = $pdo->prepare('SELECT author_id FROM author WHERE author_name = ?');
             $stmt->execute([$author]);
             $authorId = $stmt->fetchColumn();
 
             if (!$authorId) {
-                // Jeśli autor nie istnieje, dodaj nowy rekord
+                // if not, add new one
                 $stmt = $pdo->prepare('INSERT INTO author (author_name) VALUES (?)');
                 $stmt->execute([$author]);
                 $authorId = $pdo->lastInsertId();
             }
 
-            // Dodawanie rekordu książki
+            // Add book
             $stmt = $pdo->prepare('
                 INSERT INTO book (title, summary, description, num_pages, slug, genre_id, language_id, publisher_id)
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
@@ -313,16 +313,16 @@ class BookRepository extends Repository
 
             $bookId = $pdo->lastInsertId();
 
-            // Dodawanie rekordu autora książki
+            // Assign author to book
             $stmt = $pdo->prepare('INSERT INTO book_author (book_id, author_id) VALUES (?, ?)');
             $stmt->execute([$bookId, $authorId]);
 
-            // Pobieranie id waluty na podstawie skrótu
+            // Get currency id
             $stmt = $pdo->prepare('SELECT currency_id FROM currency WHERE shortcut = ?');
             $stmt->execute([$currency]);
             $currencyId = $stmt->fetchColumn();
 
-            // Dodawanie rekordu cenowego książki
+            // Add book price for given currency
             $stmt = $pdo->prepare('INSERT INTO book_price (book_id, price, currency_id) VALUES (?, ?, ?)');
             $stmt->execute([$bookId, $price, $currencyId]);
 
