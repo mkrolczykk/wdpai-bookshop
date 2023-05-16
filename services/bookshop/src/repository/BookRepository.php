@@ -215,4 +215,124 @@ class BookRepository extends Repository
         );
 
     }
+
+    public function checkIfBookExists(string $title, string $slug): bool
+    {
+        $title = strtolower(trim($title));
+        $slug = strtolower(trim($slug));
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT COUNT(*) AS count
+            FROM book
+            WHERE LOWER(title) = :title
+            AND LOWER(slug) = :slug
+        ');
+
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
+
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $result['count'] > 0;
+    }
+
+    public function addBook(AddBookReq $bookReq): bool
+    {
+        $title = $bookReq->getTitle();
+        $author = $bookReq->getAuthor();
+        $summary = $bookReq->getSummary();
+        $description = $bookReq->getDescription();
+        $slug = $bookReq->getSlug();
+        $genre = $bookReq->getGenre();
+        $numPages = $bookReq->getNumPages();
+        $language = $bookReq->getLanguage();
+        $price = $bookReq->getPrice();
+        $currency = $bookReq->getCurrency();
+        $publisher = $bookReq->getPublisher();
+
+        $pdo = $this->database->connect();
+        $pdo->beginTransaction();
+
+        try {
+            // Sprawdzenie istnienia publishera
+            $stmt = $pdo->prepare('SELECT publisher_id FROM publisher WHERE publisher_name = ?');
+            $stmt->execute([$publisher]);
+            $publisherId = $stmt->fetchColumn();
+
+            if (!$publisherId) {
+                // Jeśli publisher nie istnieje, dodaj nowy rekord
+                $stmt = $pdo->prepare('INSERT INTO publisher (publisher_name) VALUES (?)');
+                $stmt->execute([$publisher]);
+                $publisherId = $pdo->lastInsertId();
+            }
+
+            // Sprawdzenie istnienia języka
+            $stmt = $pdo->prepare('SELECT language_id FROM book_language WHERE language_name = ?');
+            $stmt->execute([$language]);
+            $languageId = $stmt->fetchColumn();
+
+            if (!$languageId) {
+                // Jeśli język nie istnieje, dodaj nowy rekord
+                $stmt = $pdo->prepare('INSERT INTO book_language (language_name) VALUES (?)');
+                $stmt->execute([$language]);
+                $languageId = $pdo->lastInsertId();
+            }
+
+            // Sprawdzenie istnienia gatunku
+            $stmt = $pdo->prepare('SELECT genre_id FROM book_genre WHERE genre = ?');
+            $stmt->execute([$genre]);
+            $genreId = $stmt->fetchColumn();
+
+            if (!$genreId) {
+                // Jeśli gatunek nie istnieje, dodaj nowy rekord
+                $stmt = $pdo->prepare('INSERT INTO book_genre (genre) VALUES (?)');
+                $stmt->execute([$genre]);
+                $genreId = $pdo->lastInsertId();
+            }
+
+            // Sprawdzenie istnienia autora
+            $stmt = $pdo->prepare('SELECT author_id FROM author WHERE author_name = ?');
+            $stmt->execute([$author]);
+            $authorId = $stmt->fetchColumn();
+
+            if (!$authorId) {
+                // Jeśli autor nie istnieje, dodaj nowy rekord
+                $stmt = $pdo->prepare('INSERT INTO author (author_name) VALUES (?)');
+                $stmt->execute([$author]);
+                $authorId = $pdo->lastInsertId();
+            }
+
+            // Dodawanie rekordu książki
+            $stmt = $pdo->prepare('
+                INSERT INTO book (title, summary, description, num_pages, slug, genre_id, language_id, publisher_id)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            ');
+
+            $stmt->execute([$title, $summary, $description, $numPages, $slug, $genreId, $languageId, $publisherId]);
+
+            $bookId = $pdo->lastInsertId();
+
+            // Dodawanie rekordu autora książki
+            $stmt = $pdo->prepare('INSERT INTO book_author (book_id, author_id) VALUES (?, ?)');
+            $stmt->execute([$bookId, $authorId]);
+
+            // Pobieranie id waluty na podstawie skrótu
+            $stmt = $pdo->prepare('SELECT currency_id FROM currency WHERE shortcut = ?');
+            $stmt->execute([$currency]);
+            $currencyId = $stmt->fetchColumn();
+
+            // Dodawanie rekordu cenowego książki
+            $stmt = $pdo->prepare('INSERT INTO book_price (book_id, price, currency_id) VALUES (?, ?, ?)');
+            $stmt->execute([$bookId, $price, $currencyId]);
+
+            $pdo->commit();
+
+            return true;
+        } catch (Exception $e) {
+            $pdo->rollback();
+            return false;
+        }
+    }
+
 }

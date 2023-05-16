@@ -1,6 +1,9 @@
 <?php
 
+require_once 'AppController.php';
 require_once __DIR__ . '/../common/utils/AuthUtil.php';
+require_once __DIR__.'/../repository/BookOrderRepository.php';
+require_once __DIR__.'/../repository/SystemUserRepository.php';
 
 class EmployeeDashboardController extends AppController {
 

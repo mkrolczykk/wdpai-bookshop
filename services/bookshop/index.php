@@ -20,6 +20,8 @@ Router::get('explore', 'ExploreBooksController');
 Router::get('myFavorites', 'UserFavoritesController');
 Router::get('shoppingCart', 'UserShoppingCartController');
 Router::get('employeeDashboard', 'EmployeeDashboardController');
+Router::get('addBook', 'AddBookController');
 Router::get('adminDashboard', 'AdminDashboardController');
+Router::get('addEmployee', 'AddEmployeeController');
 
 Router::run($path);

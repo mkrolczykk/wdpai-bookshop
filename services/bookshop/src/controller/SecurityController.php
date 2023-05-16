@@ -10,15 +10,15 @@ require_once __DIR__.'/../common/constants/Role.php';
 
 class SecurityController extends AppController {
 
-    private $url;
+    private string $url;
 
-    private $loginRedirects = array(
+    private array $loginRedirects = array(
         Role::ROLE_ADMIN => 'adminDashboard',
         Role::ROLE_EMPLOYEE => 'employeeDashboard',
         Role::ROLE_USER => 'userDashboard'
     );
 
-    private $userRepository;
+    private SystemUserRepository $userRepository;
 
     public function __construct() {
         parent::__construct();
