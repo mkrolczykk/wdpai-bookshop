@@ -6,4 +6,5 @@
     <div class="encouragement-button button">
         <a href="/login">Log in</a>
     </div>
+    <script type="text/javascript" src="public/js/encouragement-bar.js"></script>
 </div>
