@@ -28,6 +28,7 @@ function addToShoppingCart(bookId) {
             if (data && data.status === 200) {
                 // Success - Book has been added to shopping cart
                 alert(data.message);
+                location.reload();
             } else if (data && data.status === 400) {
                 // Fail - Book already present in shopping cart
                 alert(data.message);

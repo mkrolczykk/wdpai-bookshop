@@ -1,10 +1,14 @@
 class CartItem {
 
-    increaseAmountEndpoint = "http://localhost:8180/api/v1/cart/increase-amount-of-book.php";
+    baseURL = "http://localhost:8180/api/v1/cart/";
 
-    decreaseAmountEndpoint = "http://localhost:8180/api/v1/cart/decrease-amount-of-book.php";
+    increaseAmountEndpoint = this.baseURL + "increase-amount-of-book.php";
 
-    removeFromCartEndpoint = "http://localhost:8180/api/v1/cart/remove-from-shopping-cart.php";
+    decreaseAmountEndpoint = this.baseURL + "decrease-amount-of-book.php";
+
+    removeFromCartEndpoint = this.baseURL + "remove-from-shopping-cart.php";
+
+    submitOrderEndpoint  = this.baseURL + "submit-order.php";
 
     constructor(element) {
         this.element = element;
@@ -21,6 +25,9 @@ class CartItem {
         this.plusButton.addEventListener("click", this.increaseAmount.bind(this));
         this.minusButton.addEventListener("click", this.decreaseAmount.bind(this));
         this.removeButton.addEventListener("click", this.removeFromCart.bind(this));
+
+        const submitButton = document.getElementById("submitOrder");
+        submitButton.addEventListener("click", this.submitOrder.bind(this));
     }
 
     increaseAmount() {
@@ -123,7 +130,47 @@ class CartItem {
                 console.error("Error:", error);
             });
     }
+
+    submitOrder() {
+        fetch(this.submitOrderEndpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({}),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                alert(data.message);
+                location.reload();
+            })
+            .catch((error) => {
+                alert(error.message);
+                console.error("Error:", error);
+            });
+    }
+
 }
+
+// function submitOrder() {
+//
+//     fetch("http://localhost:8180/api/v1/cart/submit-order.php", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({}),
+//     })
+//         .then((response) => response.json())
+//         .then((data) => {
+//             alert(data.message);
+//             location.reload();
+//         })
+//         .catch((error) => {
+//             alert(error.message)
+//             console.error("Error:", error);
+//         });
+// }
 
 const cartItems = document.querySelectorAll(".cart-row");
 

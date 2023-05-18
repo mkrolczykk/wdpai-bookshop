@@ -176,5 +176,122 @@ class ShoppingCartRepository extends Repository {
         return (float) $result['total'];
     }
 
+    public function submitOrder(string $userId, int $shippingMethodId, int $addressId, int $currencyId): bool
+    {
+        $pdo = $this->database->connect();
+
+        $pdo->beginTransaction();
+
+        try {
+            // Get all books from shopping cart
+            $stmt = $pdo->prepare('
+                SELECT 
+                    sc.book_id, 
+                    sc.amount,
+                    bp.price
+                FROM 
+                    shopping_cart sc
+                INNER JOIN 
+                    book b ON sc.book_id = b.book_id
+                INNER JOIN
+                    book_price bp ON bp.book_id = b.book_id AND bp.currency_id = :currencyId
+                WHERE 
+                    sc.user_id = :userId
+            ');
+
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->bindParam(':currencyId', $currencyId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $orderLines = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if (empty($orderLines)) {
+                return false;
+            }
+
+            // Create new order
+            $stmt = $pdo->prepare('
+                INSERT INTO "order" (user_id, shipping_method_id, address_id)
+                VALUES (:userId, :shippingMethodId, :addressId)
+            ');
+
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->bindParam(':shippingMethodId', $shippingMethodId, PDO::PARAM_INT);
+            $stmt->bindParam(':addressId', $addressId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $orderId = $pdo->lastInsertId();
+
+            // Create a corresponding order_line for each item in shopping cart
+            foreach ($orderLines as $orderLine) {
+                $bookId = $orderLine['book_id'];
+                $amount = $orderLine['amount'];
+                $price = $orderLine['price'];
+
+                $totalPrice = $price * $amount;
+
+                $stmt = $pdo->prepare('
+                    INSERT INTO order_line (order_id, book_id, amount, total_price, currency_id)
+                    VALUES (:orderId, :bookId, :amount, :totalPrice, :currencyId)
+                ');
+
+                $stmt->bindParam(':orderId', $orderId, PDO::PARAM_INT);
+                $stmt->bindParam(':bookId', $bookId, PDO::PARAM_INT);
+                $stmt->bindParam(':amount', $amount, PDO::PARAM_INT);
+                $stmt->bindParam(':totalPrice', $totalPrice);
+                $stmt->bindParam(':currencyId', $currencyId, PDO::PARAM_INT);
+                $stmt->execute();
+            }
+
+            // Add a record to order_history with status "Order Received"
+
+            $stmt = $pdo->prepare('
+                SELECT 
+                    status_id
+                FROM 
+                    order_status
+                WHERE 
+                    status = :status
+                LIMIT 1
+            ');
+
+            $status = 'Order Received';
+
+            $stmt->bindParam(':status', $status);
+            $stmt->execute();
+
+            $statusId = $stmt->fetchColumn();
+
+            if (!$statusId) {
+                return false;
+            }
+
+            $stmt = $pdo->prepare('
+                INSERT INTO order_history (order_id, status_id)
+                VALUES (:orderId, :statusId)
+            ');
+
+            $stmt->bindParam(':orderId', $orderId, PDO::PARAM_INT);
+            $stmt->bindParam(':statusId', $statusId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Empty user's shopping cart
+            $stmt = $pdo->prepare('
+                DELETE FROM shopping_cart 
+                WHERE 
+                    user_id = :userId
+            ');
+
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $pdo->commit();
+
+            return true;
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            return false;
+        }
+    }
 
 }

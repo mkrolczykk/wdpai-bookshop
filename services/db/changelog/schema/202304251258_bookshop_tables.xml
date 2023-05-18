@@ -169,7 +169,7 @@
             <column name="currency_id" type="BIGINT" remarks="The price currency">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="price" type="DECIMAL(5,2)" remarks="The price of the book">
+            <column name="price" type="DECIMAL(10,2)" remarks="The price of the book">
                 <constraints nullable="false"/>
             </column>
             <column name="added_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP" remarks="Stores the date and time at which the book price is added">
@@ -345,7 +345,7 @@
             <column name="method_name" type="VARCHAR(150)" remarks="Name of the method">
                 <constraints nullable="false"/>
             </column>
-            <column name="method_cost" type="DECIMAL(6,2)" remarks="Cost of the method">
+            <column name="method_cost" type="DECIMAL(10,2)" remarks="Cost of the method">
                 <constraints nullable="false"/>
             </column>
             <column name="currency_id" type="BIGINT" remarks="The shipping method cost currency">
@@ -455,7 +455,7 @@
             <column name="amount" type="BIGINT" remarks="Amount of book">
                 <constraints nullable="false"/>
             </column>
-            <column name="total_price" type="DECIMAL(5,2)" remarks="The price of items in order line">
+            <column name="total_price" type="DECIMAL(15,2)" remarks="The price of items in order line">
                 <constraints nullable="false"/>
             </column>
             <column name="currency_id" type="BIGINT" remarks="The currency">

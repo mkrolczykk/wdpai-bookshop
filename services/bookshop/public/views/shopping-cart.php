@@ -79,8 +79,8 @@
                 </tr>
                 </tbody>
             </table>
-            <div class="shopping-cart-button button"
-                 onclick="alert('Action temporarily unavailable! We are working on this feature :)')"
+            <div id="submitOrder"
+                 class="shopping-cart-button button"
             >
                 <a>Submit order</a>
             </div>

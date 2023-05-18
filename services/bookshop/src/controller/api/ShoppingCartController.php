@@ -3,13 +3,16 @@ session_start();
 
 require_once __DIR__.'/../../common/constants/Role.php';
 require_once __DIR__.'/../../repository/ShoppingCartRepository.php';
+require_once __DIR__.'/../../repository/CurrencyRepository.php';
 
 class ShoppingCartController {
 
     private ShoppingCartRepository $shoppingCartRepository;
+    private CurrencyRepository $currencyRepository;
 
     public function __construct() {
         $this->shoppingCartRepository = new ShoppingCartRepository();
+        $this->currencyRepository = new CurrencyRepository();
     }
 
     public function addToShoppingCart(int $bookId, int $amount): string {
@@ -72,6 +75,23 @@ class ShoppingCartController {
             $result = array("status" => 200 , "countResult" => $countResult);
         } else {
             $result = array("status" => 400 , "countResult" => 0);
+        }
+
+        return json_encode($result);
+    }
+
+    public function submitOrder(): string {
+
+        $currencyId =
+            $this->currencyRepository->getCurrencyId($_SESSION["currency"])->getCurrencyId();
+
+        $submitResult =
+            $this->shoppingCartRepository->submitOrder($_SESSION["id"], rand(1, 8), rand(1, 31), $currencyId);
+
+        if($submitResult) {
+            $result = array("status" => 200 , "message" => "Order submitted!");
+        } else {
+            $result = array("status" => 400 , "message" => "Operation failed! Try again in a while");
         }
 
         return json_encode($result);

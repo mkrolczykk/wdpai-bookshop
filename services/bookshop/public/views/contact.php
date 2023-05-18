@@ -45,7 +45,7 @@
                         <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
                     </fieldset>
                     <fieldset>
-                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" onclick="alert('Message sent! Our support will answer you soon.')">Submit</button>
                     </fieldset>
                 </form>
             </div>
