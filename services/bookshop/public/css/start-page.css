@@ -103,13 +103,12 @@
 
 .start-page-content-features-feature:hover {
     transform: scale(1.15);
-    opacity: 0.8;
     transition: all 0.2s ease;
+    color: #3D464D;
 }
 
 .start-page-content-features-feature:hover .start-page-content-features-feature-image {
     transform: scale(1.15);
-    opacity: 0.8;
     transition: all 0.2s ease;
 }
 

@@ -255,6 +255,14 @@
     transition: max-height .2s ease-out;
 }
 
+.menu-mobile-header .menu-mobile-header-menu .Favorites {
+    color: #C72E56;
+}
+
+.menu-mobile-header .menu-mobile-header-menu .Shopping {
+    color: #643dd7;
+}
+
 .menu-mobile-header .menu-mobile-header-menu-icon {
     cursor: pointer;
     float: right;

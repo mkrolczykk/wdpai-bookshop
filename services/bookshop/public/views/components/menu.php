@@ -92,7 +92,7 @@
                                 array("Shopping cart", "/shoppingCart"),
                             );
                             foreach($menuResult as $menu) {
-                                echo '<li><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
+                                echo '<li class="'.$menu[0].'"><a href="' . $menu[1] . '">' . $menu[0] . '</a></li>';
                             }
                         ?>
                     <?php endif; ?>

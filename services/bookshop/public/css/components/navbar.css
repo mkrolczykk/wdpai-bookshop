@@ -48,6 +48,7 @@
     border: none;
     padding: 5px;
     flex-grow: 4;
+    color: #3D464D;
 }
 
 .navbar-search-box button {

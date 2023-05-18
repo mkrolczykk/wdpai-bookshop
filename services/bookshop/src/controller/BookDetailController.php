@@ -25,8 +25,12 @@ class BookDetailController extends AppController {
         $bookResult =
             $this->bookRepository->getBookByTitle($_GET['bookTitle']);
 
-        $favoriteBooksResult =
-            $this->favoriteBooksRepository->getUserFavoriteBooks($_SESSION["id"], PHP_INT_MAX );
+        if(isset($_SESSION["authenticated"]) && $_SESSION["roleId"] == Role::ROLE_USER) {
+            $favoriteBooksResult =
+                $this->favoriteBooksRepository->getUserFavoriteBooks($_SESSION["id"], PHP_INT_MAX);
+        } else {
+            $favoriteBooksResult = array();
+        }
 
         if (!$this->isPost()) {
             if (!empty($bookResult)) {

@@ -153,6 +153,7 @@
 
     .shopping-cart-content-message {
         min-height: 75px;
+        margin-bottom: 50px;
         justify-content: center;
         font-size: 1.2rem;
     }
