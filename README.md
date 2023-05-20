@@ -18,16 +18,15 @@ to readers of all ages and interests. With a user-friendly interface and a vast 
 
 ## Project Overview
 
-Bookshop is designed to cater to book lovers and provide a seamless online shopping experience. 
-Start exploring the vast collection of books, create your account, 
-and enjoy the joy of reading with Bookshop!
+Bookshop is a comprehensive online bookstore that offers a wide range of books catering to all interests. 
+With Bookshop, you can easily discover and purchase your favorite books, explore various genres, and stay updated with the latest releases.
 
 ## Features
 
 - Responsive Design: Enjoy a seamless experience across devices, including desktops, tablets, and smartphones.
 - Extensive Book Collection: Browse through a diverse selection of books, including fiction, non-fiction, bestsellers, classics, and more.
 - Search and Filter: Easily search for books by title, author.
-- Book Details: Get detailed information about each book in system database
+- Book Details: Get detailed information about each book in system database.
 - User Accounts: Create a personal account to manage your orders, save favorite books, and collect items in your shopping cart.
 - Favorite list:  Create a wishlist of books you wish to buy or read, making it easy to track and manage your reading goals.
 - Top 10 Books Recommendation: Discover popular books and trending titles with the Top 10 Books recommendation feature.
@@ -35,11 +34,11 @@ and enjoy the joy of reading with Bookshop!
 - User Roles: The system supports three user roles: Admin, Employee, and User, each with specific privileges and access levels.
 - Shopping Cart: Easily add items to your cart and manage quantities. Remove or modify items before completing your purchase.
 - Order Placement: Proceed from the cart to place your order.
-- Multi-Currency Support: Complete your orders in your preferred currency
+- Multi-Currency Support: Complete your orders in your preferred currency.
 - Order Fulfillment: Admin and Employee roles can manage order fulfillment, ensuring smooth processing and delivery.
 - Assigning Employees to Orders: Admin can assign specific orders to staff members for efficient order management.
 - Book Addition: Admins and Employees can add new books to the system, expanding the collection with ease.
-- Staff Management: Admin can add Employee accounts
+- Staff Management: Admin can add new Employees to the system.
 - Order Assignment: Staff members can take ownership of assigned orders.
 - And more.
 
@@ -71,11 +70,11 @@ and enjoy the joy of reading with Bookshop!
 
 ## Getting Started
 
-1. Go to './infrastructure/local' directory and make own copy of '.env.sample.' file. Save it as '.env' in same place.
+1. Go to 'infrastructure/local' directory and make own copy of '.env.sample.' file. Save it as '.env' in same place.
 2. Set up POSTGRES_USER and POSTGRES_PASSWORD parameters inside .env file.
-3. Go to './services/bookshop' directory and make own copy of 'config.sample.php' file. Save it as 'config.php' in same place.
+3. Go to 'services/bookshop' directory and make own copy of 'config.sample.php' file. Save it as 'config.php' in same place.
 4. Set up the same USERNAME and PASSWORD inside 'config.php' as in step 2.
-5. Go to './infrastructure' folder and follow local environment start guide instructions.
+5. Go to 'infrastructure' folder and follow local environment start guide instructions.
 
 ## Database Information
 
@@ -87,7 +86,7 @@ control any modifications made to the database structure. The database schema it
 has been implemented using the XML format, ensuring a structured and organized foundation
 for data and structure management. 
 
-Database schemas and all database-dev related files can be found inside './services/db' directory.
+Database schemas and all database-dev related files can be found inside 'services/db' directory.
 
 Entity Relationship (ERD) Diagram
 
@@ -97,7 +96,7 @@ Entity Relationship (ERD) Diagram
 
 When project is running, open browser and navigate into http://localhost:8180/
 
-#### Usage examples
+### Usage examples
 
 ### Start Page
 
