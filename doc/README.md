@@ -1,1 +1,3 @@
-## TODO -> add README.md
+# Documentation
+
+This folder contains the content for documentation of the project.
