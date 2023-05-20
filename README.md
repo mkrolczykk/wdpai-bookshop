@@ -14,7 +14,7 @@ to readers of all ages and interests. With a user-friendly interface and a vast 
 - [Database Information](#database-information)
 - [Usage](#usage)
 - [Status](#status)
-- [Contact](#contact)
+- [Contact Page](#contact-page)
 
 ## Project Overview
 
@@ -150,7 +150,7 @@ When project is running, open browser and navigate into http://localhost:8180/
 
 _completed_
 
-## Contact
+## Contact Page
 Created by @mkrolczykk - feel free to contact me!
 * E-mail: m.krolczyk66@gmail.com
 
