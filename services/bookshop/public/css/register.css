@@ -70,12 +70,15 @@ fieldset {
     min-width: 100%;
     padding: 0;
     width: 100%;
+    display: flex;
 }
 
 .notifications-fieldset {
     color: #3D464D;
     padding-bottom: 15px;
     line-height: 1.6;
+    display: flex;
+    gap: 10px;
 }
 
 #register input[type="text"],
