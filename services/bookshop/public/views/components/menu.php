@@ -126,6 +126,7 @@
             </header>
         </nav>
     </div>
+    <script type="text/javascript" src="public/js/api-endpoints.js"></script>
     <script type="text/javascript" src="public/js/menu.js"></script>
     <script type="text/javascript" src="public/js/favorites/get-favorite-books-count.js"></script>
     <script type="text/javascript" src="public/js/cart/get-shopping-cart-items-count.js"></script>

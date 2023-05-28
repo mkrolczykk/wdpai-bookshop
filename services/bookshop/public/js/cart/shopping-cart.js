@@ -1,15 +1,4 @@
 class CartItem {
-
-    baseURL = "http://localhost:8180/api/v1/cart/";
-
-    increaseAmountEndpoint = this.baseURL + "increase-amount-of-book.php";
-
-    decreaseAmountEndpoint = this.baseURL + "decrease-amount-of-book.php";
-
-    removeFromCartEndpoint = this.baseURL + "remove-from-shopping-cart.php";
-
-    submitOrderEndpoint  = this.baseURL + "submit-order.php";
-
     constructor(element) {
         this.element = element;
         this.plusButton = element.querySelector(".plus");
@@ -30,17 +19,17 @@ class CartItem {
         submitButton.addEventListener("click", this.submitOrder.bind(this));
     }
 
-    increaseAmount() {
-        this.callIncreaseAmountEndpoint();
+    async increaseAmount() {
+        await this.callIncreaseAmountEndpoint();
         this.amount++;
         this.amountElement.innerText = this.amount;
         this.updateTotalValue();
         this.updateCartTotalAmount();
     }
 
-    decreaseAmount() {
+    async decreaseAmount() {
         if (this.amount > 1) {
-            this.callDecreaseAmountEndpoint();
+            await this.callDecreaseAmountEndpoint();
             this.amount--;
             this.amountElement.innerText = this.amount;
             this.updateTotalValue();
@@ -48,8 +37,8 @@ class CartItem {
         }
     }
 
-    removeFromCart() {
-        this.callRemoveFromCartEndpoint();
+    async removeFromCart() {
+        await this.callRemoveFromCartEndpoint();
         this.element.remove();
         this.updateCartTotalAmount();
     }
@@ -76,101 +65,76 @@ class CartItem {
         cartTotalAmountElement.innerText = cartTotalAmount.toFixed(2);
     }
 
-    callIncreaseAmountEndpoint() {
-        fetch(this.increaseAmountEndpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                bookId: this.bookId,
-            }),
-        })
-            .then((response) => response.json())
-            .catch((error) => {
-                console.error("Error:", error);
+    async callIncreaseAmountEndpoint() {
+        try {
+            await fetch(increaseAmountEndpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    bookId: this.bookId,
+                }),
             });
+        } catch (error) {
+            console.error("Error:", error);
+        }
     }
 
-    callDecreaseAmountEndpoint() {
-        fetch(this.decreaseAmountEndpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                bookId: this.bookId,
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
+    async callDecreaseAmountEndpoint() {
+        try {
+            const response = await fetch(decreaseAmountEndpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    bookId: this.bookId,
+                }),
             });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     }
 
-
-    callRemoveFromCartEndpoint() {
-        fetch(this.removeFromCartEndpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                bookId: this.bookId,
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error("Error:", error);
+    async callRemoveFromCartEndpoint() {
+        try {
+            const response = await fetch(removeFromCartEndpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    bookId: this.bookId,
+                }),
             });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
     }
 
-    submitOrder() {
-        fetch(this.submitOrderEndpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({}),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                alert(data.message);
-                location.reload();
-            })
-            .catch((error) => {
-                alert(error.message);
-                console.error("Error:", error);
+    async submitOrder() {
+        try {
+            const response = await fetch(submitOrderEndpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({}),
             });
+            const data = await response.json();
+            alert(data.message);
+            location.reload();
+        } catch (error) {
+            alert(error.message);
+            console.error("Error:", error);
+        }
     }
-
 }
-
-// function submitOrder() {
-//
-//     fetch("http://localhost:8180/api/v1/cart/submit-order.php", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({}),
-//     })
-//         .then((response) => response.json())
-//         .then((data) => {
-//             alert(data.message);
-//             location.reload();
-//         })
-//         .catch((error) => {
-//             alert(error.message)
-//             console.error("Error:", error);
-//         });
-// }
 
 const cartItems = document.querySelectorAll(".cart-row");
 
