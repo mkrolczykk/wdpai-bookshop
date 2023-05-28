@@ -127,6 +127,7 @@
         }
         include "components/footer.php";
     ?>
+    <script type="text/javascript" src="public/js/api-endpoints.js"></script>
     <script type="text/javascript" src="public/js/scroll-top.js"></script>
     <script type="text/javascript" src="public/js/cart/amount-button.js"></script>
     <script type="text/javascript" src="public/js/cart/add-to-shopping-cart.js"></script>
