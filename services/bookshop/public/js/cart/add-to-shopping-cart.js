@@ -1,18 +1,34 @@
+const plus = document.querySelector(".plus");
+const minus = document.querySelector(".minus");
+const num = document.querySelector(".amount");
+
+let amount = 1;
+
+plus.addEventListener("click", () => {
+    amount++;
+    num.innerText = amount;
+});
+
+minus.addEventListener("click", () => {
+    if (amount > 1) {
+        amount--;
+        num.innerText = amount;
+    }
+});
+
 async function addToShoppingCart(bookId) {
     try {
-        const amount = parseInt(document.querySelector('.amount').innerText);
-
         const requestBody = {
             bookId: bookId,
-            amount: amount
+            amount: amount,
         };
 
         const response = await fetch(addToShoppingCartEndpoint, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify(requestBody)
+            body: JSON.stringify(requestBody),
         });
 
         if (!response.ok) {
