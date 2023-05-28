@@ -20,3 +20,7 @@ const submitOrderEndpoint  = baseURL + "cart/submit-order.php";
 const addToFavoritesEndpoint = baseURL + 'favorites/add-to-favorites.php';
 const removeFromFavoritesEndpoint = baseURL + 'favorites/remove-from-favorites.php';
 
+// orders
+const assignEmployeeToOrderEndpoint = baseURL + 'orders/assign-employee-to-order.php';
+const markAsFinishedEndpoint = baseURL + 'orders/mark-as-finished.php';
+

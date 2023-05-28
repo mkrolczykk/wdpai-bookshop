@@ -48,6 +48,7 @@
             </tbody>
         </table>
     </section>
+    <script type="text/javascript" src="public/js/api-endpoints.js"></script>
     <script type="text/javascript" src="public/js/order/toggle-order-dropdown.js"></script>
     <script type="text/javascript" src="public/js/order/assign-employee-to-order.js"></script>
     <script type="text/javascript" src="public/js/order/mark-as-finished.js"></script>
