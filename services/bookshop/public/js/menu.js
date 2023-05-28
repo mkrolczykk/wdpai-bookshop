@@ -1,13 +1,14 @@
-function loadCategories(url) {
-    return fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            const categoriesResult = data.categoriesResult;
-            // sort categories alphabetically
-            categoriesResult.sort((a, b) => a.genre.localeCompare(b.genre));
-            return categoriesResult;
-        })
-        .catch(error => console.error(error));
+async function loadCategories(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const categoriesResult = data.categoriesResult;
+        // Sort categories alphabetically
+        categoriesResult.sort((a, b) => a.genre.localeCompare(b.genre));
+        return categoriesResult;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 function createCategoryLinks(categoriesResult) {
@@ -20,6 +21,12 @@ function createCategoryLinks(categoriesResult) {
     });
 }
 
-// load categories and create links automatically
-loadCategories('http://localhost:8180/api/v1/genres/get-book-genres.php')
-    .then(categoriesResult => createCategoryLinks(categoriesResult));
+// Load categories and create links automatically
+(async () => {
+    try {
+        const categoriesResult = await loadCategories(getBookCategories);
+        createCategoryLinks(categoriesResult);
+    } catch (error) {
+        console.error(error);
+    }
+})();

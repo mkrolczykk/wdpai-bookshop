@@ -1,23 +1,17 @@
-const scrollTop = function () {
-
-    // create HTML button element
+const scrollTop = () => {
     const scrollBtn = document.createElement("button");
     scrollBtn.innerHTML = "&uarr;";
     scrollBtn.setAttribute("id", "scroll-btn");
     document.body.appendChild(scrollBtn);
 
-    // hide/show button based on scroll distance
-    const scrollBtnDisplay = function () {
-        window.scrollY > window.innerHeight
-            ? scrollBtn.classList.add("show")
-            : scrollBtn.classList.remove("show");
+    const scrollBtnDisplay = () => {
+        scrollBtn.classList.toggle("show", window.scrollY > window.innerHeight);
     };
     window.addEventListener("scroll", scrollBtnDisplay);
 
-    // scroll to top when button clicked
-    const scrollWindow = function () {
-        if (window.scrollY != 0) {
-            setTimeout(function () {
+    const scrollWindow = () => {
+        if (window.scrollY !== 0) {
+            setTimeout(() => {
                 window.scrollTo(0, window.scrollY - 50);
                 scrollWindow();
             }, 5);
@@ -26,6 +20,5 @@ const scrollTop = function () {
 
     scrollBtn.addEventListener("click", scrollWindow);
 };
-
-// run automatically
+// Start automatically
 scrollTop();

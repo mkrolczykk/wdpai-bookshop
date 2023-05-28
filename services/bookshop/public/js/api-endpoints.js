@@ -24,3 +24,6 @@ const removeFromFavoritesEndpoint = baseURL + 'favorites/remove-from-favorites.p
 const assignEmployeeToOrderEndpoint = baseURL + 'orders/assign-employee-to-order.php';
 const markAsFinishedEndpoint = baseURL + 'orders/mark-as-finished.php';
 
+// book categories
+const getBookCategories = baseURL + 'genres/get-book-genres.php';
+
